@@ -39,38 +39,45 @@ export default {
           id: 1,
           name: 'Nguyễn Tiến Dũng',
           avatar: '/teacher-avatar.jpg',
+          description: 'Sống trên đời nên biết mình đang đứng ở vị trí nào, không lớn tuổi hơn ai thì đừng đòi làm cha người khác.'
         },
 
         {
           id: 2,
           name: 'Lê Chí Huy',
           avatar: '/teacher-avatar.jpg',
+          description: 'Đừng cố gắng đánh thức một người đang ngủ say cũng như đừng cố chấp ép người khác phải nghe mình.'
         },
 
         {
           id: 3,
           name: 'Bùi Nhật Hào',
           avatar: '/teacher-avatar.jpg',
+          description: 'Hình hài là ba mẹ cho ta, thế thì tại sao lại vì người khác mà làm tổn hại nó. Có công bằng không?'
         },
 
         {
           id: 4,
           name: 'Nguyễn Hoàng Tấn',
           avatar: '/teacher-avatar.jpg',
+          description: 'Lạc đường không đáng sợ, đáng sợ nhất là không biết mình đi đâu. Khi đã quyết tâm bước, bạn sẽ đến vạch đích cuối cùng thôi'
         }
       ],
       courses: [
         {
           id: 1,
           name: 'Làm quen với Powerpoint',
+          description: 'Khóa học thiết kế Slide Powerpoint của sở hữu Giáo án toàn diện, được cải tiến liên tục trong hơn 6 năm từ 2015, giúp học viên nâng tầm tư duy thẩm mỹ thiết kế cùng kĩ năng từ cơ bản.',
           teacherId: 4,
           rating: '5',
+          price: '1,200,000đ',
           thumbnail: '/course-1.jpg',
           slots: 40,
           enrolled: 35,
           closedAt: '12-10-2021',
           daysLeft: 2,
           categoryId: 2,
+          lessons: 19,
         },
 
         {
@@ -78,6 +85,7 @@ export default {
           name: 'Kỹ năng thuyết trình',
           teacherId: 1,
           rating: '4.5',
+          price: '1,000,000đ',
           thumbnail: '/course-2.jpg',
           slots: 40,
           enrolled: 20,
@@ -85,6 +93,7 @@ export default {
           daysLeft: 3,
           isRecommend: true,
           categoryId: 1,
+          lessons: 19,
         },
 
         {
@@ -92,6 +101,7 @@ export default {
           name: 'Làm chủ thời gian của bạn',
           teacherId: 2,
           rating: '5.0',
+          price: '1,300,000đ',
           thumbnail: '/course-3.jpg',
           slots: 40,
           enrolled: 40,
@@ -99,6 +109,7 @@ export default {
           daysLeft: 1,
           isRecommend: true,
           categoryId: 1,
+          lessons: 19,
         },
 
         {
@@ -106,12 +117,14 @@ export default {
           name: 'Kỹ năng giao tiếp',
           teacherId: 3,
           rating: '5.0',
+          price: '1,500,000đ',
           thumbnail: '/course-4.jpg',
           slots: 40,
           enrolled: 38,
           closedAt: '15-10-2021',
           daysLeft: 5,
           categoryId: 1,
+          lessons: 19,
         },
 
         {
@@ -119,12 +132,14 @@ export default {
           name: 'Kỹ năng dạy online',
           teacherId: 1,
           rating: '4.8',
+          price: '800,000đ',
           thumbnail: '/course-5.jpg',
           slots: 40,
           enrolled: 15,
           closedAt: '15-10-2021',
           daysLeft: 5,
           categoryId: 1,
+          lessons: 19,
         },
 
         {
@@ -132,12 +147,14 @@ export default {
           name: 'Nhập môn Office 365',
           teacherId: 2,
           rating: '4.9',
+          price: '3,000,000đ',
           thumbnail: '/course-5.jpg',
           slots: 40,
           enrolled: 3,
           closedAt: '16-10-2021',
           daysLeft: 6,
           categoryId: 2,
+          lessons: 19,
         },
 
         {
@@ -145,12 +162,14 @@ export default {
           name: 'Excel cho người mới bắt đầu',
           teacherId: 3,
           rating: '4.5',
+          price: '1,500,000đ',
           thumbnail: '/course-7.jpg',
           slots: 40,
           enrolled: 30,
           closedAt: '14-10-2021',
           daysLeft: 4,
           categoryId: 2,
+          lessons: 19,
         },
 
         {
@@ -158,12 +177,14 @@ export default {
           name: 'Task list với OneNote',
           teacherId: 4,
           rating: '4.7',
+          price: '500,000đ',
           thumbnail: '/course-8.jpg',
           slots: 40,
           enrolled: 25,
           closedAt: '14-10-2021',
           daysLeft: 4,
           categoryId: 2,
+          lessons: 19,
         }
       ],
       categories: [

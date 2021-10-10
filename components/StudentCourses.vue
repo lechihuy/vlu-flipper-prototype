@@ -53,7 +53,7 @@
         <h3 class="text-gray-800 font-semibold">{{ category.name }}</h3>
         <a class="text-blue-500 ml-auto hover:text-blue-700" href="">Xem tất cả</a>
       </div>
-      <div class="grid grid-cols-4 gap-4">
+      <div class="grid grid-cols-4 gap-5">
         <CategoryCourseItem
           v-for="course in courses.filter(course => course.categoryId === category.id)"
           :key="course.id"
