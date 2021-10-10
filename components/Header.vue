@@ -14,14 +14,17 @@
       </div>
 
       <div class="ml-auto h-10 flex flex-row items-center">
-        <div class="text-gray-700 font-semibold mr-5 h-full flex items-center">
+        <div class="text-gray-700 font-semibold mr-10 h-full flex items-center">
           <outline-light-bulb-icon class="w-5 h-5 mr-1" />
           Khám phá
         </div>
 
-        <div class="text-gray-700 font-semibold mr-5 h-full flex items-center">
-          <span class="rounded-full bg-red-500 px-1 text-white text-xs mr-1">LIVE</span>
-          Lớp học
+        <div class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">
+          <span class="flex absolute h-3 w-3 top-1 -right-1 -mt-1 -mr-1">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+          </span>
+          <a href="" class="block">Lớp học</a>
         </div>
 
         <div class="flex items-center bg-gray-50 rounded-full cursor-pointer hover:bg-gray-100">
