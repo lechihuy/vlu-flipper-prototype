@@ -9,12 +9,12 @@
       </NuxtLink>
     </h3>
     <div class="flex items-center">
-      <span class="text-xs text-gray-500">
-        <outline-user-icon class="w-4 h-4 inline-block" />
+      <span class="text-xs text-gray-500 flex items-center">
+        <outline-user-icon class="w-4 h-4 mr-1" />
         {{ teachers.find(teacher => teacher.id === course.teacherId).name }}
       </span>
-      <span class="text-xs text-gray-500 ml-auto">
-        <solid-star-icon class="w-4 h-4 inline-block text-yellow-500" /> {{ course.rating }}
+      <span class="text-xs text-gray-500 flex items-center ml-auto">
+        <solid-star-icon class="w-4 h-4 mr-1 text-yellow-500" /> {{ course.rating }}
       </span>
     </div>
     <div class="mt-2">
