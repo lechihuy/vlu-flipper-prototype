@@ -1,7 +1,6 @@
 <template>
   <header class="bg-white border-b fixed top-0 left-0 w-full pl-64 z-20">
-    <div class="px-5 py-3 flex h-14 items-center">
-
+    <div class="px-10 py-3 flex h-14 items-center">
       <div class="flex-none">
         <div class="flex w-96 relative h-10">
           <div class="w-8 h-8 rounded-full bg-white shadow absolute top-1 left-1 flex items-center justify-center">

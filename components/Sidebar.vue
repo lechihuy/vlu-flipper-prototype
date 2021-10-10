@@ -21,10 +21,10 @@
 
     <ul class="px-2 mt-4">
       <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer">
-        <a href="" class="block flex items-center"><outline-view-grid-icon class="w-5 h-5 mr-2" /> Tổng quan</a>
+        <a class="block flex items-center"><outline-view-grid-icon class="w-5 h-5 mr-2" /> Tổng quan</a>
       </li>
       <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer">
-        <a href="" class="block flex items-center"><outline-bookmark-icon class="w-5 h-5 mr-2" /> Khóa học</a>
+        <NuxtLink :to="`/courses?role=${user.role}`" class="block flex items-center"><outline-bookmark-icon class="w-5 h-5 mr-2" /> Khóa học</NuxtLink>
       </li>
       <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer">
         <a href="" class="block flex items-center"><outline-users-icon class="w-5 h-5 mr-2" /> Lớp học</a>
