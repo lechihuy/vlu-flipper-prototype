@@ -46,7 +46,7 @@
                   </NuxtLink>
                   <span
                     v-if="course.enrolled === course.slots"
-                    class="bg-green-100 px-1.5 py-0.5 rounded-full text-green-700 text-xs">Đã đầy</span>
+                    class="bg-green-100 px-1.5 py-0.5 rounded-full text-green-700 text-xs">Đã đủ học viên</span>
                   <span
                     v-else
                     class="bg-gray-100 px-1.5 py-0.5 rounded-full text-gray-700 text-xs">
