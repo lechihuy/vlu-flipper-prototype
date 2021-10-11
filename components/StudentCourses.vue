@@ -1,5 +1,9 @@
 <template>
   <div class="flex flex-col gap-5">
+    <div class="bg-yellow-100 p-5 text-yellow-800 rounded-lg shadow">
+      <h3 class="flex items-center text-xl mb-2"><solid-exclamation-icon class="w-6 h-6 mr-1" /> Trước khi trải nghiệm</h3>
+      Để trải nghiệm chức năng thanh toán khóa học, hãy đăng ký khóa học <strong>"Kỹ năng thuyết trình"</strong>, vì khi lớp đủ số lượng học viên mới kích hoạt thanh toán.
+    </div>
 
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-8 bg-white rounded-lg shadow-sm">
@@ -23,9 +27,12 @@
         <div class="p-5">
           <div class="flex items-center mb-5">
             <h3 class="text-gray-800 font-semibold">Khóa học đã đăng ký</h3>
-            <a class="text-blue-500 ml-auto hover:text-blue-700" v-if="$store.state.user.enrolled.length > 0" href="">
+            <NuxtLink
+              :to="'/courses/enrolled?role=' + $store.state.user.role"
+              class="text-blue-500 ml-auto hover:text-blue-700"
+              v-if="$store.state.user.enrolled.length > 0">
               Xem tất cả
-            </a>
+            </NuxtLink>
           </div>
           <template>
             <div v-if="$store.state.user.enrolled.length > 0" class="flex flex-col gap-4">

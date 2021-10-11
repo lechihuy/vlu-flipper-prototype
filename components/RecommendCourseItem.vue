@@ -19,7 +19,7 @@
     </div>
     <div class="mt-2 flex items-center">
       <span class="text-gray-700 font-semibold text-sm">{{ course.price }}</span>
-      <span class="ml-auto text-green-500" v-if="$store.state.user.enrolled.indexOf(course.id) > -1">
+      <span class="ml-auto text-green-500 flex items-center text-sm" v-if="$store.state.user.enrolled.indexOf(course.id) > -1">
         <outline-check-icon class="w-4 h-4 mr-1 text-green-500" /> Đã đăng ký
       </span>
     </div>

@@ -103,7 +103,7 @@ export const state = () => ({
       price: '1,000,000đ',
       thumbnail: '/course-2.jpg',
       slots: 40,
-      enrolled: 20,
+      enrolled: 39,
       closedAt: '13-10-2021',
       daysLeft: 3,
       isRecommend: true,
@@ -661,5 +661,30 @@ export const mutations = {
 
   addBookmark(state, { courseId }) {
     state.user.bookmark.push(courseId)
+  },
+
+  filledCourse(state, { courseId }) {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.enrolled = newCourse.slots
+    Object.assign(course, newCourse)
+  },
+
+  enrollCourse(state, { courseId }) {
+    state.user.enrolled.unshift(courseId)
+
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.enrolled++
+    Object.assign(course, newCourse)
+  },
+
+  unEnrollCourse(state, { courseId }) {
+    state.user.enrolled.splice(state.user.enrolled.indexOf(courseId), 1)
+
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.enrolled--
+    Object.assign(course, newCourse)
   }
 }

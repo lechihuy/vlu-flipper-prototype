@@ -11,9 +11,9 @@
           {{ user.name }}
         </span>
 
-        <span class="bg-green-100 px-1.5 py-0.5 rounded-full text-green-700 text-xs"
+        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
               v-if="user.role === 'student'">Học viên</span>
-        <span class="bg-blue-100 px-1.5 py-0.5 rounded-full text-blue-700 text-xs"
+        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800"
               v-else>Giảng viên</span>
       </div>
       <outline-cog-icon class="w-6 h-6 text-white ml-auto" />
