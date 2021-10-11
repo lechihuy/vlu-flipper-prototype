@@ -56,6 +56,11 @@ export default {
       plugins: [
         lineClamp,
       ],
+      variants: {
+        extend: {
+          opacity: ['disabled'],
+        }
+      },
     }
   }
 }

@@ -35,6 +35,10 @@
 
 <script>
 export default {
-  inject: ['user'],
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  }
 }
 </script>

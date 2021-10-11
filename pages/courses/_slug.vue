@@ -56,13 +56,22 @@
           <p class="text-gray-500 italic">(giá chưa bao gồm hỗ trợ học phí)</p>
 
           <div class="flex flex-col mt-4 gap-1">
-            <a href=""
-               class="text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg">
+            <button
+              type="button"
+              class="text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
+            >
               Đăng ký ngay
-            </a>
-            <button type="button"
+            </button>
+            <button
+              type="button"
+              @click="toggleBookmark(course.id)"
               class="rounded-lg text-gray-700 border border-gray-700 px-5 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-100">
-              <outline-heart-icon class="w-5 h-5 mr-1" /> Yêu thích
+              <component
+                :is="bookmark.indexOf(course.id) === -1 ? 'outline-heart-icon' : 'solid-heart-icon'"
+                class="w-5 h-5 mr-1"
+                :class="{'text-red-500': bookmark.indexOf(course.id) > -1}"
+              />
+              <span>{{ bookmark.indexOf(course.id) === -1 ? 'Yêu thích' : 'Bỏ yêu thích' }}</span>
             </button>
           </div>
         </div>
@@ -79,7 +88,8 @@
         <div v-if="course.roadmap">
           <div class="border border-gray-300 divide-y divide-gray-300 rounded-lg overflow-hidden">
             <SectionItem
-              v-for="section in course.roadmap"
+              v-for="(section, index) in course.roadmap"
+              :key="index"
               :hasResource="false"
               :section="section"
             />
@@ -92,8 +102,6 @@
 
 <script>
 export default {
-  inject: ['courses', 'categories', 'teachers'],
-
   async asyncData({ params }) {
     const courseId = parseInt(params.slug)
 
@@ -102,17 +110,30 @@ export default {
 
   computed: {
     course() {
-      return this.courses.find(course => course.id === this.courseId)
+      return this.$store.state.courses.find(course => course.id === this.courseId)
     },
 
     teacher() {
-      return this.teachers.find(teacher => teacher.id === this.course.teacherId)
+      return this.$store.state.teachers.find(teacher => teacher.id === this.course.teacherId)
     },
 
     category() {
-      return this.categories.find(category => category.id === this.course.categoryId)
+      return this.$store.state.categories.find(category => category.id === this.course.categoryId)
+    },
+
+    bookmark() {
+      return this.$store.state.user.bookmark
     }
   },
+
+  methods: {
+    toggleBookmark(courseId) {
+      if (this.bookmark.indexOf(courseId) === -1)
+        this.$store.commit('addBookmark', { courseId })
+      else
+        this.$store.commit('removeBookmark', { courseId })
+    }
+  }
 }
 </script>
 

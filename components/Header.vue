@@ -20,11 +20,53 @@
         </div>
 
         <div class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">
-          <span class="flex absolute h-3 w-3 top-1 -right-1 -mt-1 -mr-1">
+          <span class="flex absolute h-2 w-2 top-1 -right-1 -mt-1 -mr-1">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
           </span>
           <a href="" class="block">Lớp học</a>
+        </div>
+
+        <div v-if="$store.state.user.role === 'student'" class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">
+          <span @click="toggleBookmark">
+            <outline-heart-icon class="w-7 h-7 cursor-pointer" />
+          </span>
+
+          <div v-show="isShownBookmark" class="select-none p-3 bg-white border border-gray-200 shadow py-3 absolute w-80 top-10 -right-2 rounded-lg  font-normal">
+            <h3 class="font-semibold mb-2">Danh sách yêu thích</h3>
+            <div v-if="bookmark.length > 0" class="flex flex-col gap-4">
+              <div v-for="course in bookmark"
+                   class="flex items-center">
+                <NuxtLink :to="`/courses/${course.id}?role=${user.role}`">
+                  <img :src="course.thumbnail" class="object-cover rounded-lg border border-gray-200 w-14 h-14">
+                </NuxtLink>
+                <div class="ml-2 overflow-hidden">
+                  <NuxtLink :to="`/courses/${course.id}?role=${user.role}`">
+                    <p class="truncate text-gray-800 overflow-hidden block min-w-0">{{ course.name }}</p>
+                  </NuxtLink>
+                  <span
+                    v-if="course.enrolled === course.slots"
+                    class="bg-green-100 px-1.5 py-0.5 rounded-full text-green-700 text-xs">Đã đầy</span>
+                  <span
+                    v-else
+                    class="bg-gray-100 px-1.5 py-0.5 rounded-full text-gray-700 text-xs">
+                    Chưa đủ học viên ({{ course.enrolled }}/{{ course.slots }})
+                  </span>
+                </div>
+                <span @click="removeBookmark(course.id)" class="ml-auto">
+                  <outline-x-circle-icon class="w-6 h-6 text-gray-500 cursor-pointer"  />
+                </span>
+              </div>
+            </div>
+            <div v-else class="text-gray-500 text-sm py-2">Hãy thêm khóa học yêu thích đầu tiên.</div>
+          </div>
+        </div>
+
+        <div class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">
+          <span class="flex absolute h-2 w-2 top-1 right-0 -mt-1 -mr-1">
+            <span class="inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+          </span>
+          <outline-bell-icon class="w-7 h-7 cursor-pointer" />
         </div>
 
         <div class="flex items-center bg-gray-50 rounded-full cursor-pointer hover:bg-gray-100">
@@ -39,6 +81,30 @@
 
 <script>
 export default {
-  inject: ['user'],
+  data() {
+    return {
+      isShownBookmark: false,
+    }
+  },
+
+  computed: {
+    bookmark() {
+      return this.$store.state.courses.filter(course => this.user.bookmark.indexOf(course.id) > -1)
+    },
+
+    user() {
+      return this.$store.state.user
+    },
+  },
+
+  methods: {
+    removeBookmark(courseId) {
+      this.$store.commit('removeBookmark', { courseId })
+    },
+
+    toggleBookmark() {
+      this.isShownBookmark = ! this.isShownBookmark
+    }
+  }
 }
 </script>

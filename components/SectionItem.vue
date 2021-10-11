@@ -13,7 +13,7 @@
       <div
         v-for="(lesson, index) in section.lessons"
         :key="index"
-        class="flex items-center"
+        class="flex items-center font-normal"
       >
         {{ lesson.name }}
         <div

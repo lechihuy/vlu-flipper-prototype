@@ -11,7 +11,7 @@
 
           <div class="grid grid-cols-2 gap-5">
             <RecommendCourseItem
-              v-for="course in courses.filter(course => course.isRecommend === true)"
+              v-for="course in $store.state.courses.filter(course => course.isRecommend === true)"
               :key="course.id"
               :course="course"
             />
@@ -26,7 +26,7 @@
             <a class="text-blue-500 ml-auto hover:text-blue-700" href="">Xem tất cả</a>
           </div>
           <div class="flex flex-col gap-4">
-            <div v-for="course in courses.filter(course => user.enrolled.indexOf(course.id) > -1)" class="flex items-center">
+            <div v-for="course in $store.state.courses.filter(course => $store.state.user.enrolled.indexOf(course.id) > -1)" class="flex items-center">
               <img :src="course.thumbnail" class="object-cover rounded-lg border border-gray-200 w-14 h-14">
               <div class="ml-2 overflow-hidden">
                 <p class="truncate text-gray-800 overflow-hidden block min-w-0">{{ course.name }}</p>
@@ -46,7 +46,7 @@
     </div>
 
     <div
-      v-for="category in categories"
+      v-for="category in $store.state.categories"
       :key="category.id"
       class="bg-white rounded-lg shadow-sm p-5">
       <div class="flex items-center mb-5">
@@ -55,7 +55,7 @@
       </div>
       <div class="grid grid-cols-4 gap-5">
         <CategoryCourseItem
-          v-for="course in courses.filter(course => course.categoryId === category.id)"
+          v-for="course in $store.state.courses.filter(course => course.categoryId === category.id)"
           :key="course.id"
           :course="course"
         />
@@ -67,6 +67,5 @@
 
 <script>
 export default {
-  inject: ['user', 'courses', 'categories'],
 }
 </script>
