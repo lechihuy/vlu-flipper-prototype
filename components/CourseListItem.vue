@@ -1,5 +1,4 @@
 <template>
-
   <tr>
     <td class="px-6 py-4 whitespace-nowrap">
       <div class="flex items-center">
@@ -36,8 +35,8 @@
       {{ course.price }}
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-right">
-      <a v-if="course.enrolled === course.slots"
-         class="bg-blue-500 text-white px-3 py-2 hover:bg-blue-600 rounded-lg">Thanh toán</a>
+      <NuxtLink :to="`/payments/${course.id}?role=${$store.state.user.role}`" v-if="course.enrolled === course.slots"
+         class="bg-blue-500 text-white px-3 py-2 hover:bg-blue-600 rounded-lg">Thanh toán</NuxtLink>
       <a class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
          @click="showConfirmUnEnrollCourseModal"
       >Hủy đăng ký</a>

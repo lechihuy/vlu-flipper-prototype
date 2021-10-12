@@ -1,4 +1,5 @@
 import lineClamp from '@tailwindcss/line-clamp'
+import form from '@tailwindcss/forms'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -55,6 +56,7 @@ export default {
     config: {
       plugins: [
         lineClamp,
+        form,
       ],
       variants: {
         extend: {

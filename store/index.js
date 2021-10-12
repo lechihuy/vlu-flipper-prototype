@@ -644,6 +644,7 @@ export const mutations = {
         role: 'student',
         enrolled: [],
         bookmark: [1],
+        email: 'hoa.nh@vanlang.uni.vn'
       } : {
         name: 'Nguyễn Tiến Dũng',
         avatar: '/teacher-avatar.jpg',
