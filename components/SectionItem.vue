@@ -10,7 +10,7 @@
       >
       <div class="ml-auto flex-none flex items-center">
         <span class="text-gray-400 text-sm font-normal">{{ section.lessons.length }} tiết</span>
-        <button type="button" class="ml-2 w-8 h-8 rounded-lg border border-gray-300 bg-white flex justify-center items-center"
+        <button v-if="hasResource && $store.state.user.role === 'teacher'" type="button" class="ml-2 w-8 h-8 rounded-lg border border-gray-300 bg-white flex justify-center items-center"
           @click.stop="removeSection"
         ><outline-x-icon class="w-5 h-5" /></button>
       </div>
@@ -55,7 +55,7 @@
               </div>
             </div>
           </div>
-          <button type="button" class="ml-2 w-8 h-8 rounded-lg border border-gray-300 bg-white flex justify-center items-center "
+          <button v-if="hasResource && $store.state.user.role === 'teacher'" type="button" class="ml-2 w-8 h-8 rounded-lg border border-gray-300 bg-white flex justify-center items-center "
             @click="removeLesson(index)"
           ><outline-x-icon class="w-5 h-5" /></button>
         </div>
