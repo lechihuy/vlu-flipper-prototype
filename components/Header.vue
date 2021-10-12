@@ -9,6 +9,7 @@
           <input type="text"
                  class="px-3 py-2 bg-gray-50 rounded-full shadow-inner w-full border border-gray-200 pl-11 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
                  placeholder="Tìm kiếm khóa học..."
+                 :value="$route.query.q" @keyup.enter="search"
           >
         </div>
       </div>
@@ -104,6 +105,14 @@ export default {
 
     toggleBookmark() {
       this.isShownBookmark = ! this.isShownBookmark
+    },
+
+    search(event) {
+      if (! ('q' in this.$route.query)) {
+        this.$router.push(`/courses?q=${event.target.value}&role=${this.$store.state.user.role}`)
+      } else {
+        this.$store.commit('loadQuery', { q: event.target.value })
+      }
     }
   }
 }

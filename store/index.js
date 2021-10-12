@@ -1,4 +1,5 @@
 export const state = () => ({
+  q: null,
   user: null,
   teachers: [
     {
@@ -36,6 +37,7 @@ export const state = () => ({
       teacherId: 4,
       rating: '5',
       price: '1,200,000đ',
+      numberPrice: 1200000,
       thumbnail: '/course-1.jpg',
       slots: 40,
       enrolled: 35,
@@ -101,6 +103,7 @@ export const state = () => ({
       teacherId: 1,
       rating: '4.5',
       price: '1,000,000đ',
+      numberPrice: 1000000,
       thumbnail: '/course-2.jpg',
       slots: 40,
       enrolled: 39,
@@ -188,6 +191,7 @@ export const state = () => ({
       teacherId: 2,
       rating: '5.0',
       price: '1,300,000đ',
+      numberPrice: 1300000,
       thumbnail: '/course-3.jpg',
       slots: 40,
       enrolled: 40,
@@ -271,6 +275,7 @@ export const state = () => ({
       teacherId: 3,
       rating: '5.0',
       price: '1,500,000đ',
+      numberPrice: 1500000,
       thumbnail: '/course-4.jpg',
       slots: 40,
       enrolled: 38,
@@ -345,6 +350,7 @@ export const state = () => ({
       teacherId: 1,
       rating: '4.8',
       price: '800,000đ',
+      numberPrice: 800000,
       thumbnail: '/course-5.jpg',
       slots: 40,
       enrolled: 15,
@@ -417,6 +423,7 @@ export const state = () => ({
       teacherId: 2,
       rating: '4.9',
       price: '3,000,000đ',
+      numberPrice: 3000000,
       thumbnail: '/course-5.jpg',
       slots: 40,
       enrolled: 3,
@@ -493,6 +500,7 @@ export const state = () => ({
       teacherId: 3,
       rating: '4.5',
       price: '1,500,000đ',
+      numberPrice: 1500000,
       thumbnail: '/course-7.jpg',
       slots: 40,
       enrolled: 30,
@@ -567,6 +575,7 @@ export const state = () => ({
       teacherId: 4,
       rating: '4.7',
       price: '500,000đ',
+      numberPrice: 500000,
       thumbnail: '/course-8.jpg',
       slots: 40,
       enrolled: 25,
@@ -636,6 +645,10 @@ export const state = () => ({
 })
 
 export const mutations = {
+  loadQuery(state, { q }) {
+    state.q = q
+  },
+
   loadUser(state, { role }) {
     state.user = role === 'student'
       ? {
