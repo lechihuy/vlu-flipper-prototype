@@ -31,15 +31,22 @@
         Chưa đủ học viên ({{ course.enrolled }}/{{ course.slots }})
       </span>
     </td>
-    <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
+    <td v-if="user.role === 'student'" class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
       {{ course.price }}
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-right">
-      <NuxtLink :to="`/payments/${course.id}?role=${$store.state.user.role}`" v-if="course.enrolled === course.slots"
-         class="bg-blue-500 text-white px-3 py-2 hover:bg-blue-600 rounded-lg">Thanh toán</NuxtLink>
+      <NuxtLink
+        :to="`/payments/${course.id}?role=${$store.state.user.role}`"
+        v-if="user.role === 'student' && course.enrolled === course.slots"
+        class="bg-blue-500 text-white px-3 py-2 hover:bg-blue-600 rounded-lg">Thanh toán</NuxtLink>
       <a class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
          @click="showConfirmUnEnrollCourseModal"
+         v-if="user.role === 'student'"
       >Hủy đăng ký</a>
+      <NuxtLink
+        :to="`/courses/${course.id}?role=${$store.state.user.role}`"
+        v-if="user.role === 'teacher'"
+        class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg">Xem thông tin</NuxtLink>
     </td>
   </tr>
 </template>
@@ -56,6 +63,10 @@ export default {
   computed: {
     teacher() {
       return this.$store.state.teachers.find(teacher => teacher.id === this.course.teacherId)
+    },
+
+    user() {
+      return this.$store.state.user
     }
   },
 

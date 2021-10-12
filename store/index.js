@@ -659,6 +659,7 @@ export const mutations = {
         bookmark: [1],
         email: 'hoa.nh@vanlang.uni.vn'
       } : {
+        id: 1,
         name: 'Nguyễn Tiến Dũng',
         avatar: '/teacher-avatar.jpg',
         role: 'teacher',
@@ -700,5 +701,83 @@ export const mutations = {
     const newCourse = { ...course }
     newCourse.enrolled--
     Object.assign(course, newCourse)
-  }
+  },
+
+  uploadResource(state, { courseId, sectionIndex, lessonIndex, filename })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    if (! ('resources' in newCourse.roadmap[sectionIndex].lessons[lessonIndex]))
+      newCourse.roadmap[sectionIndex].lessons[lessonIndex].resources = []
+    newCourse.roadmap[sectionIndex].lessons[lessonIndex].resources.push(filename)
+    Object.assign(course, newCourse)
+  },
+
+  removeResource(state, { courseId, sectionIndex, lessonIndex, filename })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.roadmap[sectionIndex].lessons[lessonIndex].resources.splice(
+      newCourse.roadmap[sectionIndex].lessons[lessonIndex].resources.indexOf(filename), 1
+    )
+    Object.assign(course, newCourse)
+  },
+
+  changeSection(state, { courseId, sectionIndex, name })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.roadmap[sectionIndex].name = name
+    Object.assign(course, newCourse)
+  },
+
+  changeLesson(state, { courseId, sectionIndex, lessonIndex, name })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.roadmap[sectionIndex].lessons[lessonIndex].name = name
+    Object.assign(course, newCourse)
+  },
+
+  removeSection(state, { courseId, sectionIndex })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.roadmap.splice(
+      sectionIndex, 1
+    )
+    Object.assign(course, newCourse)
+  },
+
+  removeLesson(state, { courseId, sectionIndex, lessonIndex })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.roadmap[sectionIndex].lessons.splice(
+      lessonIndex, 1
+    )
+    Object.assign(course, newCourse)
+  },
+
+  addSection(state, { courseId })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.roadmap.push({
+      name: '',
+      lessons: [],
+    })
+    Object.assign(course, newCourse)
+  },
+
+  addLesson(state, { courseId, sectionIndex })
+  {
+    const course = state.courses.find(course => course.id === courseId)
+    const newCourse = { ...course }
+    newCourse.roadmap[sectionIndex].lessons.push({
+      name: '',
+      resources: [],
+    })
+    Object.assign(course, newCourse)
+  },
 }

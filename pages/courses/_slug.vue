@@ -23,8 +23,8 @@
             </span>
           </div>
 
-          <div class="absolute bottom-0 w-full">
-            <div class="px-4 py-3 r bg-gray-800 rounded-lg mt-4">
+          <div class="absolute bottom-0 w-full" >
+            <div class="px-4 py-3 r bg-gray-800 rounded-lg mt-4" v-if="$store.state.user.role === 'student'">
               <div class="flex items-center">
                 <img :src="teacher.avatar" class="rounded-full w-10 h-10" />
                 <div class="ml-2">
@@ -57,12 +57,14 @@
           <img :src="course.thumbnail" class="w-full">
 
           <div class="p-5">
-            <p class="text-gray-800 text-3xl font-bold">{{ course.price }}</p>
-            <p class="text-gray-500 italic">(giá chưa bao gồm hỗ trợ học phí)</p>
+            <div v-if="$store.state.user.role === 'student'">
+              <p class="text-gray-800 text-3xl font-bold">{{ course.price }}</p>
+              <p class="text-gray-500 italic">(giá chưa bao gồm hỗ trợ học phí)</p>
+            </div>
 
             <div class="flex flex-col mt-4 gap-1">
               <button
-                v-if="! $store.state.user.enrolled.includes(course.id) && course.enrolled < course.slots"
+                v-if="$store.state.user.role === 'student' && ! $store.state.user.enrolled.includes(course.id) && course.enrolled < course.slots"
                 type="button"
                 class="text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
                 @click="$refs.confirmEnrollCourseModal.isShown = true"
@@ -70,13 +72,20 @@
                 Đăng ký ngay
               </button>
               <button
-                v-else-if="! $store.state.user.enrolled.includes(course.id) && course.enrolled === course.slots"
+                v-else-if="$store.state.user.role === 'student' && ! $store.state.user.enrolled.includes(course.id) && course.enrolled === course.slots"
                 type="button"
                 disabled
                 class="cursor-not-allowed text-center bg-gray-400 uppercase px-5 py-3 text-white rounded-lg"
               >
                 Lớp đã đầy
               </button>
+              <NuxtLink
+                :to="`/courses/roadmap/${course.id}?role=${$store.state.user.role}`"
+                v-else-if="$store.state.user.role === 'teacher'"
+                class="text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
+              >
+                Quản lý lộ trình khóa học
+              </NuxtLink>
               <button
                 v-else
                 type="button"
@@ -87,6 +96,7 @@
               </button>
 
               <button
+                v-if="$store.state.user.role === 'student'"
                 type="button"
                 @click="toggleBookmark(course.id)"
                 class="rounded-lg text-gray-700 border border-gray-700 px-5 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-100">
@@ -109,13 +119,15 @@
 
         <div>
           <h3 class="font-semibold text-2xl text-gray-700 mb-2">Lộ trình khóa học</h3>
-          <div v-if="course.roadmap">
+          <div v-if="course.roadmap.length">
             <div class="border border-gray-300 divide-y divide-gray-300 rounded-lg overflow-hidden">
               <SectionItem
                 v-for="(section, index) in course.roadmap"
                 :key="index"
                 :hasResource="false"
                 :section="section"
+                :sectionIndex="index"
+                :courseId="course.id"
               />
             </div>
           </div>
