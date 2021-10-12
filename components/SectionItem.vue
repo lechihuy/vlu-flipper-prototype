@@ -39,7 +39,7 @@
             @click.self="toggleResource(`resource-${section.name}-${index}`)"
             style="background-image: url('/resource.png'); background-repeat: no-repeat; background-position: center;"
           >
-            <div class="bg-white z-10 absolute w-52 py-2 border border-gray-400 rounded-lg right-9 top-0 resource-dropdown hidden">
+            <div class="bg-white z-10 absolute w-52 py-2 border border-gray-400 rounded-lg right-20 top-0 resource-dropdown hidden">
               <label
                 v-if="$store.state.user.role === 'teacher'"
                 class="flex flex-col items-center px-3 py-1 mx-3 mb-2 bg-gray-100 text-gray-800 rounded-lg tracking-wide border border-gray-300 cursor-pointer hover:bg-gray-200">
