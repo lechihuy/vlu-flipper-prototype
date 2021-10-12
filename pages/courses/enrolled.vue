@@ -2,7 +2,7 @@
   <div>
     <Modal ref="confirmUnEnrollCourseModal" @submit="unEnrollCourseCallback" />
 
-    <h3 class="text-2xl text-gray-800 mb-5">Khóa học đã đăng ký</h3>
+    <h3 class="text-2xl text-gray-800 mb-5">Tình trạng khóa học</h3>
 
     <CourseList
       v-if="enrolledCourses.length > 0"

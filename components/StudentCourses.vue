@@ -26,7 +26,7 @@
       <div class="col-span-4 bg-white rounded-lg shadow-sm">
         <div class="p-5">
           <div class="flex items-center mb-5">
-            <h3 class="text-gray-800 font-semibold">Khóa học đã đăng ký</h3>
+            <h3 class="text-gray-800 font-semibold">Tình trạng khóa học</h3>
             <NuxtLink
               :to="'/courses/enrolled?role=' + $store.state.user.role"
               class="text-blue-500 ml-auto hover:text-blue-700"

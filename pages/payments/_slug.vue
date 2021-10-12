@@ -107,6 +107,7 @@ export default {
 
   methods: {
     payCourse(courseId) {
+      this.$store.commit('unEnrollCourse', { courseId })
       this.$router.push(`/schedules/${courseId}?role=${this.$store.state.user.role}&payment_type=${this.paymentType}`)
     }
   }
