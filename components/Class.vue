@@ -194,7 +194,7 @@
 
             </div>
 
-            <div else>
+            <div v-else>
               <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="divide-y divide-gray-200 min-w-full">
                   <thead class="bg-gray-50">
