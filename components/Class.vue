@@ -121,6 +121,11 @@
           >Tài liệu</div>
           <div
             class="px-3 py-2 hover:text-blue-500 cursor-pointer"
+            :class="{'border-b-2 border-blue-500 text-blue-500 font-semibold': selectedTab === 'member'}"
+            @click="activeTab('member')"
+          >Học viên (40)</div>
+          <div
+            class="px-3 py-2 hover:text-blue-500 cursor-pointer"
             :class="{'border-b-2 border-blue-500 text-blue-500 font-semibold': selectedTab === 'review'}"
             @click="activeTab('review')"
           >Đánh giá</div>
@@ -134,6 +139,17 @@
             <button type="button" class="flex-none ml-5 w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600">
               <outline-paper-airplane-icon class="w-6 h-6" />
             </button>
+          </div>
+        </div>
+
+        <div v-show="selectedTab === 'member'" class="p-5">
+          <div v-for="i in 5" :key="i">
+            <div v-for="student in $store.state.students" :key="student">
+              <div class="flex items-center mb-2">
+                <img :src="'https://ui-avatars.com/api/?name=' + student" class="w-10 h-10 rounded-full mr-5">
+                {{ student }}
+              </div>
+            </div>
           </div>
         </div>
 

@@ -23,6 +23,9 @@
       {{ klass.taughtLessons.length }}/{{ course.lessons }}
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold text-center">
+      40
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold text-center">
       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white"
             v-if="Object.keys(klass.liveLesson).length">Đang LIVE</span>
       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800"
