@@ -1,7 +1,33 @@
 <template>
   <header class="bg-white border-b fixed top-0 left-0 w-full pl-64 z-20">
     <div class="px-10 py-3 flex h-14 items-center">
-      <div class="flex-none">
+      <div class="flex-none" v-if="$route.name === 'classes'">
+        <div class="flex w-96 relative h-10">
+          <div class="w-8 h-8 rounded-full bg-white shadow absolute top-1 left-1 flex items-center justify-center">
+            <solid-search-icon class="w-5 h-5 text-gray-500" />
+          </div>
+          <input type="text"
+                 class="px-3 py-2 bg-gray-50 rounded-full shadow-inner w-full border border-gray-200 pl-11 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
+                 placeholder="Tìm kiếm lớp học..."
+                 :value="$route.query.q" @keyup.enter="searchClass"
+          >
+        </div>
+      </div>
+
+      <div class="flex-none" v-else-if="$route.name === 'courses' && $store.state.user.role === 'teacher'">
+        <div class="flex w-96 relative h-10">
+          <div class="w-8 h-8 rounded-full bg-white shadow absolute top-1 left-1 flex items-center justify-center">
+            <solid-search-icon class="w-5 h-5 text-gray-500" />
+          </div>
+          <input type="text"
+                 class="px-3 py-2 bg-gray-50 rounded-full shadow-inner w-full border border-gray-200 pl-11 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
+                 placeholder="Tìm kiếm khóa học..."
+                 :value="$route.query.q" @keyup.enter="searchClass"
+          >
+        </div>
+      </div>
+
+      <div class="flex-none" v-else-if="$route.name !== 'classes-slug'">
         <div class="flex w-96 relative h-10">
           <div class="w-8 h-8 rounded-full bg-white shadow absolute top-1 left-1 flex items-center justify-center">
             <solid-search-icon class="w-5 h-5 text-gray-500" />
@@ -14,6 +40,7 @@
         </div>
       </div>
 
+
       <div class="ml-auto h-10 flex flex-row items-center">
         <div class="text-gray-700 font-semibold mr-10 h-full flex items-center">
           <outline-light-bulb-icon class="w-5 h-5 mr-1" />
@@ -21,7 +48,7 @@
         </div>
 
         <div class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">
-          <span class="flex absolute h-2 w-2 top-1 -right-1 -mt-1 -mr-1">
+          <span class="flex absolute h-2 w-2 top-1 -right-1 -mt-1 -mr-1" v-show="Object.keys($store.state.classes[0].liveLesson).length">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
           </span>
@@ -113,6 +140,10 @@ export default {
       } else {
         this.$store.commit('loadQuery', { q: event.target.value })
       }
+    },
+
+    searchClass(event) {
+      this.$store.commit('loadQuery', { q: event.target.value })
     }
   }
 }

@@ -30,6 +30,17 @@ export const state = () => ({
       description: 'Lạc đường không đáng sợ, đáng sợ nhất là không biết mình đi đâu. Khi đã quyết tâm bước, bạn sẽ đến vạch đích cuối cùng thôi'
     }
   ],
+  students: [
+    'Tô Hoàn Bảo',
+    'Võ Việt Hà',
+    'Nguyễn Thái Hoàng',
+    'Nguyễn Thiên Sơn',
+    'Nguyễn Tất Đạt'
+  ],
+  isTurnOffCamera: false,
+  microphone: '50',
+  volume: '50',
+  shareScreen: false,
   courses: [
     {
       id: 1,
@@ -124,15 +135,18 @@ export const state = () => ({
           name: 'Phần 1: Tổng quan',
           lessons: [
             {
+              id: '100001',
               name: 'Bài 1: Giới thiệu',
             },
             {
+              id: '100002',
               name: 'Bài 2: Tầm quan trọng của kỹ năng thuyết trình chuyên nghiệp',
               resources: [
                 'TamQuanTrong.pdf',
               ]
             },
             {
+              id: '100003',
               name: 'Bài 3: Phân tích các yếu tố ảnh hưởng đến hiệu quả thuyết trình',
               resources: [
                 'PhanTich.pdf',
@@ -145,12 +159,14 @@ export const state = () => ({
           name: 'Phần 2: Công tác chuẩn bị để thuyết trình trở nên chuyên nghiệp',
           lessons: [
             {
+              id: '100004',
               name: 'Bài 4: Sử dụng công cụ hỗ trợ',
               resources: [
                 'HuongDanCaiDat.docx',
               ]
             },
             {
+              id: '100005',
               name: 'Bài 5: Một số phương pháp thực hành trước',
               resources: [
                 'BaiTap.pdf',
@@ -163,9 +179,11 @@ export const state = () => ({
           name: 'Phần 3: Nghệ thuật thuyết trình',
           lessons: [
             {
+              id: '100006',
               name: 'Bài 6: Hướng dẫn cách biểu đạt: ngôn từ, ngữ điệu, hình thể',
             },
             {
+              id: '100007',
               name: 'Bài 7: Kiểm soát và phân tích tâm lý',
             }
           ]
@@ -175,9 +193,11 @@ export const state = () => ({
           name: 'Phần 4: Tổng kết, đánh giá',
           lessons: [
             {
+              id: '100008',
               name: 'Bài 8: Thị phạm thực hành và xử lý các tình huống giả',
             },
             {
+              id: '100009',
               name: 'Bài 9: Tổng kết và rút kinh nghiệm',
             }
           ]
@@ -641,10 +661,56 @@ export const state = () => ({
       id: 2,
       name: 'Office'
     }
+  ],
+  classes: [
+    {
+      id: 1,
+      name: 'CLS-FLPVLU-123456_Kỹ năng thuyết trình',
+      teacherId: 1,
+      courseId: 2,
+      students: [2],
+      taughtLessons: [
+        {
+          id: '100001',
+          comments: [
+            {
+              id: 1,
+              userId: 2,
+              name: 'Nguyễn Hồng Hoa',
+              body: 'Mình có thể xem tài liệu ở đâu vậy thầy?'
+            },
+
+            {
+              id: 2,
+              userId: 1,
+              name: 'Nguyễn Tiến Dũng',
+              body: 'Bạn có thể xem ở tab "Tài liệu" ở trang lớp học nhé!'
+            }
+          ]
+        },
+      ],
+      liveLesson: {
+      }
+    }
   ]
 })
 
 export const mutations = {
+  startMeeting(state, lessonId = '100002') {
+    state.classes[0].liveLesson = {
+      id: lessonId,
+      comments: [
+
+        {
+          id: 2,
+          userId: 1,
+          name: 'Nguyễn Tiến Dũng',
+          body: 'Chào các bạn!'
+        }
+      ],
+    }
+  },
+
   loadQuery(state, { q }) {
     state.q = q
   },
@@ -652,6 +718,7 @@ export const mutations = {
   loadUser(state, { role }) {
     state.user = role === 'student'
       ? {
+        id: 2,
         name: 'Nguyễn Hồng Hoa',
         avatar: '/student-avatar.jpg',
         role: 'student',
@@ -775,9 +842,42 @@ export const mutations = {
     const course = state.courses.find(course => course.id === courseId)
     const newCourse = { ...course }
     newCourse.roadmap[sectionIndex].lessons.push({
+      id: generateCode(),
       name: '',
       resources: [],
     })
     Object.assign(course, newCourse)
   },
+
+  changeMicrophone(state, val)
+  {
+    state.microphone = val
+  },
+
+  changeVolume(state, val)
+  {
+    state.volume = val
+  },
+
+  turnOffCamera(state, val)
+  {
+    state.isTurnOffCamera = val
+  },
+
+  shareScreen(state, val)
+  {
+    state.shareScreen = val
+  }
+}
+
+const generateCode = () => {
+  let result           = '';
+  let characters       = '0123456789';
+  let charactersLength = characters.length;
+  for (let i = 0; i < 6; i++) {
+    result += characters.charAt(Math.floor(Math.random() *
+      charactersLength));
+  }
+
+  return result;
 }

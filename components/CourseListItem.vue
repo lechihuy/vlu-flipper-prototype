@@ -34,6 +34,14 @@
     <td v-if="user.role === 'student'" class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
       {{ course.price }}
     </td>
+    <td v-if="user.role === 'teacher'" class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
+      <div class="flex items-center">
+        <solid-star-icon class="w-5 h-5 mr-1 text-yellow-500" /> {{ course.rating }}
+      </div>
+    </td>
+    <td v-if="user.role === 'teacher'" class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
+      {{ course.lessons }}
+    </td>
     <td class="px-6 py-4 whitespace-nowrap text-right">
       <NuxtLink
         :to="`/payments/${course.id}?role=${$store.state.user.role}`"

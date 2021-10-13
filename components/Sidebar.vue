@@ -23,11 +23,20 @@
       <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer">
         <a class="block flex items-center"><outline-view-grid-icon class="w-5 h-5 mr-2" /> Tổng quan</a>
       </li>
-      <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer">
-        <NuxtLink :to="`/courses?role=${user.role}`" class="block flex items-center"><outline-bookmark-icon class="w-5 h-5 mr-2" /> Khóa học</NuxtLink>
+      <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer relative">
+        <NuxtLink :to="`/courses?role=${user.role}`" class="block flex items-center">
+          <outline-bookmark-icon class="w-5 h-5 mr-2" /> Khóa học
+        </NuxtLink>
+
       </li>
-      <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer">
-        <a href="" class="block flex items-center"><outline-users-icon class="w-5 h-5 mr-2" /> Lớp học</a>
+      <li class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer relative">
+        <NuxtLink :to="'/classes?role=' + $store.state.user.role" class="block flex items-center">
+          <outline-users-icon class="w-5 h-5 mr-2" /> Lớp học
+        </NuxtLink>
+        <span class="flex absolute h-3 w-3 top-3.5 right-3" v-show="Object.keys($store.state.classes[0].liveLesson).length">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+        </span>
       </li>
     </ul>
   </aside>

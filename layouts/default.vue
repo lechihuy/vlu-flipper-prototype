@@ -22,6 +22,15 @@ export default {
 
   beforeCreate() {
     this.$store.commit('loadUser', { role: this.$route.query.role })
+    if (this.$route.query.role === 'student') {
+      this.$store.commit('startMeeting')
+    }
+  },
+
+  watch:{
+    $route (to, from){
+      this.$store.commit('loadQuery', { q: null })
+    }
   }
 }
 </script>

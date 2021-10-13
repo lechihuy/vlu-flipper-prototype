@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h3 class="text-2xl text-gray-800 mb-5">Quản lý khóa học</h3>
+    <h3 class="text-2xl text-gray-800 mb-5">Lớp học</h3>
 
-    <CourseList
-      v-if="courses.length > 0"
-      :courses="courses"
+    <ClassList
+      v-if="classes.length > 0"
+      :classes="classes"
     />
 
     <div v-else class="text-center py-20">
       <div>
         <img src="/empty-enroll.jpg" class="w-52 h-52 rounded-full inline-block mx-auto">
-        <p class="text-gray-600 mt-10 text-xl">Không tìm thấy khóa học nào.</p>
+        <p class="text-gray-600 mt-10 text-xl">Không tìm thấy lớp học nào.</p>
       </div>
     </div>
   </div>
@@ -19,16 +19,18 @@
 <script>
 export default {
   computed: {
-    courses() {
-      let courses = this.$store.state.courses.filter(course => course.teacherId === this.$store.state.user.id)
+    classes() {
+      let classes = this.$store.state.user.role === 'teacher'
+        ? this.$store.state.classes.filter(klass => klass.teacherId === this.$store.state.user.id)
+        : this.$store.state.classes.filter(klass => klass.students.includes(this.$store.state.user.id))
 
-      courses = courses.filter(course => {
+      classes = classes.filter(klass => {
         return !(this.$store.state.q &&
-          !this.textToSlug(course.name.toLowerCase(), ' ')
+          !this.textToSlug(klass.name.toLowerCase(), ' ')
             .includes(this.textToSlug(this.$store.state.q.toLowerCase(), ' ')));
       })
 
-      return courses
+      return classes
     }
   },
 
