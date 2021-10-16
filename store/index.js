@@ -30,8 +30,16 @@ export const state = () => ({
     }
   ],
   students: [
-
+    'Tô Hoàn Bảo',
+    'Võ Việt Hà',
+    'Nguyễn Thái Hoàng',
+    'Nguyễn Thiên Sơn',
+    'Nguyễn Tất Đạt'
   ],
+  isTurnOffCamera: false,
+  microphone: '50',
+  volume: '50',
+  shareScreen: false,
   courses: [
     {
       id: 1,
@@ -641,7 +649,7 @@ export const state = () => ({
   classes: [
     {
       id: 1,
-      name: 'CLS-FLPVLU-123456_Kỹ năng thuyết trình',
+      name: 'VLU-123456_Kỹ năng thuyết trình',
       teacherId: 1,
       courseId: 2,
       taughtLessons: [
@@ -650,7 +658,7 @@ export const state = () => ({
           comments: [
             {
               id: 1,
-              userId: 2,
+              userId: 5,
               body: 'Mình có thể xem tài liệu ở đâu vậy thầy?'
             },
 
@@ -662,7 +670,10 @@ export const state = () => ({
           ]
         },
       ],
-    }
+      liveLesson: {
+        id: '100002',
+      }
+    },
   ]
 })
 

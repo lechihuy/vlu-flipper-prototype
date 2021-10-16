@@ -7,7 +7,7 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
           </span>
-          <a href="" class="block">Lớp học</a>
+          <NuxtLink :to="'/classes?role=' + user.role" class="block">Lớp học</NuxtLink>
         </div>
 
         <div class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">

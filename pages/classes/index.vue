@@ -20,44 +20,9 @@
 export default {
   computed: {
     classes() {
-      let classes = this.$store.state.user.role === 'teacher'
-        ? this.$store.state.classes.filter(klass => klass.teacherId === this.$store.state.user.id)
-        : this.$store.state.classes.filter(klass => klass.students.includes(this.$store.state.user.id))
-
-      classes = classes.filter(klass => {
-        return !(this.$store.state.q &&
-          !this.textToSlug(klass.name.toLowerCase(), ' ')
-            .includes(this.textToSlug(this.$store.state.q.toLowerCase(), ' ')));
-      })
-
-      return classes
+      return this.$store.state.classes
     }
   },
-
-  methods: {
-    textToSlug(text, separator = '-') {
-      text = text.trim() ?? ''
-      text = text
-        .toLowerCase()
-        .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a")
-        .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
-        .replace(/ì|í|ị|ỉ|ĩ/g, "i")
-        .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o")
-        .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u")
-        .replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
-        .replace(/đ/g, "d")
-        .replace(/\s+/g, "-")
-        .replace(/[^A-Za-z0-9_-]/g, "")
-        .replace(/-+/g, "-")
-        .replace(/-+$/, '')
-
-      if (separator) {
-        return text.replace(/-/g, separator)
-      }
-
-      return text
-    },
-  }
 }
 </script>
 

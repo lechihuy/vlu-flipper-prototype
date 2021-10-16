@@ -154,17 +154,6 @@
                     <outline-microphone-icon
                       class="w-5 h-5 text-red-500"
                     />
-                    <div class="relative">
-                      <span @click.stop="toggleDropdown">
-                        <outline-dots-horizontal-icon class="ml-2 text-white w-5 h-5 cursor-pointer" />
-                      </span>
-
-                      <div class="hidden dropdown bg-white w-52 shadow-lg rounded-lg py-2 absolute right-0 top-6">
-                        <div class="cursor-pointer px-3 py-1 hover:bg-gray-50 text-gray-800 text-sm">Tắt microphone</div>
-                        <div class="cursor-pointer px-3 py-1 hover:bg-gray-50 text-gray-800 text-sm">Cho phép chia sẻ màn hình</div>
-                        <div class="cursor-pointer px-3 py-1 hover:bg-gray-50 text-gray-800 text-sm">Xóa khỏi phòng</div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

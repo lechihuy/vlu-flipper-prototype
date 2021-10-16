@@ -6,12 +6,7 @@
 
     <Stream ref="stream" :klass="klass" :course="course" :lesson="selectedLesson" :comments="comments" />
 
-    <div class="bg-yellow-100 p-5 text-yellow-800 rounded-lg shadow col-span-12 mb-5">
-      <h3 class="flex items-center text-xl mb-2"><solid-exclamation-icon class="w-6 h-6 mr-1" /> Trước khi trải nghiệm</h3>
-      Có thể tải lại trang để làm mới các trạng thái về ban đầu
-    </div>
-
-    <div class="col-span-5 p-5 pr-10">
+    <div class="col-span-5 pr-10">
       <div class="flex items-center">
         <img :src="course.thumbnail" class="w-16 h-16 rounded-lg object-cover">
         <div class="ml-2">
@@ -68,25 +63,7 @@
                class="ml-auto flex-none">
 
             <button
-              v-if="$store.state.user.role === 'teacher' && ! Object.keys(klass.liveLesson).length"
-              type="button" class="text-white hover:bg-indigo-600 text-base px-3 py-2 bg-indigo-500 rounded-lg flex items-center"
-              @click="joinMeeting"
-            >
-              <solid-video-camera-icon class="w-5 h-5 mr-1" /> Tạo Meet
-            </button>
-
-            <button
-              v-else-if="$store.state.user.role === 'teacher' && Object.keys(klass.liveLesson).length
-                && klass.liveLesson.id === selectedLesson.id
-              "
-              type="button" class="text-white hover:bg-indigo-600 text-base px-3 py-2 bg-indigo-500 rounded-lg flex items-center"
-              @click="joinMeeting"
-            >
-              <outline-login-icon class="w-5 h-5 mr-1" /> Vào lớp
-            </button>
-
-            <button
-              v-else-if="$store.state.user.role === 'student' && Object.keys(klass.liveLesson).length
+              v-if="$store.state.user.role === 'student' && Object.keys(klass.liveLesson).length
               && klass.liveLesson.id === selectedLesson.id"
               type="button" class="text-white hover:bg-indigo-600 text-base px-3 py-2 bg-indigo-500 rounded-lg flex items-center"
               @click="joinMeeting"
