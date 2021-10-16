@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <div class="col-span-5 bg-white overflow-hidden rounded-lg relative">
+        <div class="col-span-5 bg-white overflow-hidden rounded-lg">
           <img :src="course.thumbnail" class="w-full">
 
           <div class="p-5">
@@ -57,10 +57,10 @@
               }) }}</p>
             </div>
 
-            <div class="flex flex-col mt-4 gap-1 absolute bottom-5" style="width: calc(100% - 2.5rem)">
+            <div class="flex flex-col mt-4 gap-1 items-end">
               <button
                 type="button"
-                class="text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
+                class="w-full text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
                 @click="$refs.confirmEnrollCourseModal.isShown = true"
               >
                 Đăng ký ngay
