@@ -1,54 +1,44 @@
 export const state = () => ({
-  q: null,
   user: null,
   teachers: [
     {
       id: 1,
       name: 'Nguyễn Tiến Dũng',
-      avatar: '/teacher-avatar.jpg',
-      description: 'Sống trên đời nên biết mình đang đứng ở vị trí nào, không lớn tuổi hơn ai thì đừng đòi làm cha người khác.'
+      description: 'Sống trên đời nên biết mình đang đứng ở vị trí nào, không lớn tuổi hơn ai thì đừng đòi làm cha người khác.',
+      avatar: 'https://ui-avatars.com/api/?name=' + 'Nguyễn Tiến Dũng',
     },
 
     {
       id: 2,
-      name: 'Lê Chí Huy',
-      avatar: '/teacher-avatar.jpg',
-      description: 'Đừng cố gắng đánh thức một người đang ngủ say cũng như đừng cố chấp ép người khác phải nghe mình.'
+      name: 'Bùi Trọng Nghĩa',
+      description: 'Đừng cố gắng đánh thức một người đang ngủ say cũng như đừng cố chấp ép người khác phải nghe mình.',
+      avatar: 'https://ui-avatars.com/api/?name=' + 'Bùi Trọng Nghĩa',
     },
 
     {
       id: 3,
-      name: 'Bùi Nhật Hào',
-      avatar: '/teacher-avatar.jpg',
-      description: 'Hình hài là ba mẹ cho ta, thế thì tại sao lại vì người khác mà làm tổn hại nó. Có công bằng không?'
+      name: 'Lê Thị Thu Huyền',
+      description: 'Hình hài là ba mẹ cho ta, thế thì tại sao lại vì người khác mà làm tổn hại nó. Có công bằng không?',
+      avatar: 'https://ui-avatars.com/api/?name=' + 'Lê Thị Thu Huyền',
     },
 
     {
       id: 4,
-      name: 'Nguyễn Hoàng Tấn',
-      avatar: '/teacher-avatar.jpg',
-      description: 'Lạc đường không đáng sợ, đáng sợ nhất là không biết mình đi đâu. Khi đã quyết tâm bước, bạn sẽ đến vạch đích cuối cùng thôi'
+      name: 'Lê Nguyễn Thảo Nhi',
+      description: 'Lạc đường không đáng sợ, đáng sợ nhất là không biết mình đi đâu. Khi đã quyết tâm bước, bạn sẽ đến vạch đích cuối cùng thôi',
+      avatar: 'https://ui-avatars.com/api/?name=' + 'Lê Nguyễn Thảo Nhi',
     }
   ],
   students: [
-    'Tô Hoàn Bảo',
-    'Võ Việt Hà',
-    'Nguyễn Thái Hoàng',
-    'Nguyễn Thiên Sơn',
-    'Nguyễn Tất Đạt'
+
   ],
-  isTurnOffCamera: false,
-  microphone: '50',
-  volume: '50',
-  shareScreen: false,
   courses: [
     {
       id: 1,
       name: 'Làm quen với Powerpoint',
       teacherId: 4,
       rating: '5',
-      price: '1,200,000đ',
-      numberPrice: 1200000,
+      price: 0,
       thumbnail: '/course-1.jpg',
       slots: 40,
       enrolled: 35,
@@ -107,14 +97,12 @@ export const state = () => ({
         }
       ]
     },
-
     {
       id: 2,
       name: 'Kỹ năng thuyết trình',
       teacherId: 1,
       rating: '4.5',
-      price: '1,000,000đ',
-      numberPrice: 1000000,
+      price: 500000,
       thumbnail: '/course-2.jpg',
       slots: 40,
       enrolled: 39,
@@ -204,14 +192,12 @@ export const state = () => ({
         }
       ]
     },
-
     {
       id: 3,
       name: 'Làm chủ thời gian của bạn',
       teacherId: 2,
       rating: '5.0',
-      price: '1,300,000đ',
-      numberPrice: 1300000,
+      price: 0,
       thumbnail: '/course-3.jpg',
       slots: 40,
       enrolled: 40,
@@ -288,14 +274,12 @@ export const state = () => ({
         }
       ]
     },
-
     {
       id: 4,
       name: 'Kỹ năng giao tiếp',
       teacherId: 3,
       rating: '5.0',
-      price: '1,500,000đ',
-      numberPrice: 1500000,
+      price: 500000,
       thumbnail: '/course-4.jpg',
       slots: 40,
       enrolled: 38,
@@ -363,14 +347,12 @@ export const state = () => ({
         }
       ]
     },
-
     {
       id: 5,
       name: 'Kỹ năng dạy online',
       teacherId: 1,
       rating: '4.8',
-      price: '800,000đ',
-      numberPrice: 800000,
+      price: 0,
       thumbnail: '/course-5.jpg',
       slots: 40,
       enrolled: 15,
@@ -436,14 +418,12 @@ export const state = () => ({
         }
       ],
     },
-
     {
       id: 6,
       name: 'Nhập môn Office 365',
       teacherId: 2,
       rating: '4.9',
-      price: '3,000,000đ',
-      numberPrice: 3000000,
+      price: 0,
       thumbnail: '/course-5.jpg',
       slots: 40,
       enrolled: 3,
@@ -513,14 +493,12 @@ export const state = () => ({
         }
       ]
     },
-
     {
       id: 7,
       name: 'Excel cho người mới bắt đầu',
       teacherId: 3,
       rating: '4.5',
-      price: '1,500,000đ',
-      numberPrice: 1500000,
+      price: 0,
       thumbnail: '/course-7.jpg',
       slots: 40,
       enrolled: 30,
@@ -588,14 +566,12 @@ export const state = () => ({
         }
       ]
     },
-
     {
       id: 8,
       name: 'Task list với OneNote',
       teacherId: 4,
       rating: '4.7',
-      price: '500,000đ',
-      numberPrice: 500000,
+      price: 500000,
       thumbnail: '/course-8.jpg',
       slots: 40,
       enrolled: 25,
@@ -668,7 +644,6 @@ export const state = () => ({
       name: 'CLS-FLPVLU-123456_Kỹ năng thuyết trình',
       teacherId: 1,
       courseId: 2,
-      students: [2],
       taughtLessons: [
         {
           id: '100001',
@@ -676,21 +651,17 @@ export const state = () => ({
             {
               id: 1,
               userId: 2,
-              name: 'Nguyễn Hồng Hoa',
               body: 'Mình có thể xem tài liệu ở đâu vậy thầy?'
             },
 
             {
               id: 2,
               userId: 1,
-              name: 'Nguyễn Tiến Dũng',
               body: 'Bạn có thể xem ở tab "Tài liệu" ở trang lớp học nhé!'
             }
           ]
         },
       ],
-      liveLesson: {
-      }
     }
   ]
 })
@@ -718,13 +689,12 @@ export const mutations = {
   loadUser(state, { role }) {
     state.user = role === 'student'
       ? {
-        id: 2,
+        id: 5,
         name: 'Nguyễn Hồng Hoa',
-        avatar: '/student-avatar.jpg',
+        avatar: 'https://ui-avatars.com/api/?name=' + 'Nguyễn Hồng Hoa',
         role: 'student',
         enrolled: [],
         bookmark: [1],
-        email: 'hoa.nh@vanlang.uni.vn'
       } : {
         id: 1,
         name: 'Nguyễn Tiến Dũng',

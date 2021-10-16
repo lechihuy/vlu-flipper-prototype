@@ -14,17 +14,13 @@
               {{ category.name }}
             </span>
 
-            <span class="flex items-center text-yellow-500 ">
-              <solid-star-icon class="w-5 h-5 text-yellow-500 ml-2 mr-1" /> {{ course.rating }}
-            </span>
-
             <span class="flex items-center text-gray-100">
               <solid-clock-icon class="w-5 h-5 text-gray-100 ml-2 mr-1" /> {{ course.lessons }} tiết
             </span>
           </div>
 
-          <div class="absolute bottom-0 w-full" >
-            <div class="px-4 py-3 r bg-gray-800 rounded-lg mt-4" v-if="$store.state.user.role === 'student'">
+          <div class="w-full" >
+            <div class="px-4 py-3 r bg-gray-800 rounded-lg mt-4">
               <div class="flex items-center">
                 <img :src="teacher.avatar" class="rounded-full w-10 h-10" />
                 <div class="ml-2">
@@ -44,68 +40,30 @@
             <div class="mt-5">
               <div class="flex mb-1">
                 <span class="text-base text-gray-200">Kết thúc đăng ký sau {{ course.closedAt }} (còn {{ course.daysLeft }} ngày nữa)</span>
-                <span class="ml-auto text-base text-gray-200">{{ course.enrolled }}/{{ course.slots }} học viên</span>
-              </div>
-              <div class="rounded-full shadow-inner bg-gray-800">
-                <div class="h-2 bg-green-400 rounded-full" :style="{width: `${(course.enrolled/course.slots)*100}%`}"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-span-5 bg-white overflow-hidden rounded-lg">
+        <div class="col-span-5 bg-white overflow-hidden rounded-lg relative">
           <img :src="course.thumbnail" class="w-full">
 
           <div class="p-5">
-            <div v-if="$store.state.user.role === 'student'">
-              <p class="text-gray-800 text-3xl font-bold">{{ course.price }}</p>
-              <p class="text-gray-500 italic">(giá chưa bao gồm hỗ trợ học phí)</p>
+            <div>
+              <p v-if="course.price === 0" class="text-green-500 text-3xl font-bold">FREE</p>
+              <p v-else class="text-gray-800 text-3xl font-bold">{{ course.price.toLocaleString('vi-VN', {
+                style: 'currency',
+                currency: 'VND',
+              }) }}</p>
             </div>
 
-            <div class="flex flex-col mt-4 gap-1">
+            <div class="flex flex-col mt-4 gap-1 absolute bottom-5" style="width: calc(100% - 2.5rem)">
               <button
-                v-if="$store.state.user.role === 'student' && ! $store.state.user.enrolled.includes(course.id) && course.enrolled < course.slots"
                 type="button"
                 class="text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
                 @click="$refs.confirmEnrollCourseModal.isShown = true"
               >
                 Đăng ký ngay
-              </button>
-              <button
-                v-else-if="$store.state.user.role === 'student' && ! $store.state.user.enrolled.includes(course.id) && course.enrolled === course.slots"
-                type="button"
-                disabled
-                class="cursor-not-allowed text-center bg-gray-400 uppercase px-5 py-3 text-white rounded-lg"
-              >
-                Lớp đã đầy
-              </button>
-              <NuxtLink
-                :to="`/courses/roadmap/${course.id}?role=${$store.state.user.role}`"
-                v-else-if="$store.state.user.role === 'teacher'"
-                class="text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
-              >
-                Quản lý lộ trình khóa học
-              </NuxtLink>
-              <button
-                v-else
-                type="button"
-                class="text-center bg-gray-600 hover:bg-gray-700 uppercase px-5 py-3 text-white rounded-lg"
-                @click="$refs.confirmUnEnrollCourseModal.isShown = true"
-              >
-                Hủy đăng ký
-              </button>
-
-              <button
-                v-if="$store.state.user.role === 'student'"
-                type="button"
-                @click="toggleBookmark(course.id)"
-                class="rounded-lg text-gray-700 border border-gray-700 px-5 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-100">
-                <component
-                  :is="bookmark.indexOf(course.id) === -1 ? 'outline-heart-icon' : 'solid-heart-icon'"
-                  class="w-5 h-5 mr-1"
-                  :class="{'text-red-500': bookmark.indexOf(course.id) > -1}"
-                />
-                <span>{{ bookmark.indexOf(course.id) === -1 ? 'Yêu thích' : 'Bỏ yêu thích' }}</span>
               </button>
             </div>
           </div>
@@ -132,6 +90,37 @@
             </div>
           </div>
         </div>
+
+        <div>
+          <h3 class="font-semibold text-2xl text-gray-700 mb-2">Lịch học</h3>
+          <div class="grid grid-cols-2 gap-5 mb-5">
+            <div class="text-right">
+              <p class="text-gray-500">Thời gian học từ</p>
+              <p class="font-mono text-gray-800 text-xl">13/08/2021</p>
+            </div>
+            <div>
+              <p class="text-gray-500">đến</p>
+              <p class="font-mono text-gray-800 text-xl">25/09/2021</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-2">
+            <div class="col-span-3 p-5 rounded-lg bg-blue-200 font-semibold flex items-center">Thứ 2</div>
+            <div class="col-span-9 p-5 rounded-lg bg-gray-50">
+              <p class="flex items-center"><solid-clock-icon class="w-5 h-5 mr-2" /> 19g00 - 21g00</p>
+            </div>
+
+            <div class="col-span-3 p-5 rounded-lg bg-blue-200 font-semibold flex items-center">Thứ 3</div>
+            <div class="col-span-9 p-5 rounded-lg bg-gray-50">
+              <p class="flex items-center"><solid-clock-icon class="w-5 h-5 mr-2" /> 19g00 - 21g00</p>
+            </div>
+
+            <div class="col-span-3 p-5 rounded-lg bg-blue-200 font-semibold flex items-center">Thứ 5</div>
+            <div class="col-span-9 p-5 rounded-lg bg-gray-50">
+              <p class="flex items-center"><solid-clock-icon class="w-5 h-5 mr-2" /> 19g00 - 21g00</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

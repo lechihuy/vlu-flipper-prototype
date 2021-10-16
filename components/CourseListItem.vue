@@ -21,40 +21,23 @@
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
       <span
-        v-if="course.enrolled === course.slots"
-        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-        Lớp sẵn sàng
-      </span>
-      <span
-        v-else
         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-        Chưa đủ học viên ({{ course.enrolled }}/{{ course.slots }})
+        Chưa mở lớp
       </span>
     </td>
-    <td v-if="user.role === 'student'" class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
-      {{ course.price }}
+    <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
+      {{ course.price === 0 ? 'FREE' : course.price.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      }) }}
     </td>
-    <td v-if="user.role === 'teacher'" class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
-      <div class="flex items-center">
-        <solid-star-icon class="w-5 h-5 mr-1 text-yellow-500" /> {{ course.rating }}
-      </div>
-    </td>
-    <td v-if="user.role === 'teacher'" class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
+    <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
       {{ course.lessons }}
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-right">
-      <NuxtLink
-        :to="`/payments/${course.id}?role=${$store.state.user.role}`"
-        v-if="user.role === 'student' && course.enrolled === course.slots"
-        class="bg-blue-500 text-white px-3 py-2 hover:bg-blue-600 rounded-lg">Thanh toán</NuxtLink>
       <a class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
          @click="showConfirmUnEnrollCourseModal"
-         v-if="user.role === 'student'"
       >Hủy đăng ký</a>
-      <NuxtLink
-        :to="`/courses/${course.id}?role=${$store.state.user.role}`"
-        v-if="user.role === 'teacher'"
-        class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg">Xem thông tin</NuxtLink>
     </td>
   </tr>
 </template>
