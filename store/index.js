@@ -674,6 +674,25 @@ export const state = () => ({
         id: '100002',
       }
     },
+  ],
+  supports: [
+    {
+      id: 1,
+      course: 'Khóa học nâng cao năng lực giảng dạy',
+      attachments: [
+        'BienLaiHocPhi.pdf'
+      ],
+      status: 0,
+    },
+    {
+      id: 2,
+      course: 'Khóa học dựng slide bài giảng',
+      attachments: [
+        'BienLaiHocPhi.pdf'
+      ],
+      status: 1,
+      percent: '50%'
+    }
   ]
 })
 
@@ -682,7 +701,6 @@ export const mutations = {
     state.classes[0].liveLesson = {
       id: lessonId,
       comments: [
-
         {
           id: 2,
           userId: 1,

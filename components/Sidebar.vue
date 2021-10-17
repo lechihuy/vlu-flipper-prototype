@@ -42,6 +42,12 @@
         </span>
       </li>
 
+      <li v-if="user.role === 'student'" class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer relative">
+        <NuxtLink :to="`/support?role=${user.role}`" class="block flex items-center">
+          <outline-cash-icon class="w-5 h-5 mr-2" /> Hỗ trợ học phí
+        </NuxtLink>
+      </li>
+
     </ul>
   </aside>
 </template>
