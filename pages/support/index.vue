@@ -39,6 +39,9 @@
                   <a
                     v-if="support.status === 0"
                     class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg">Hủy đơn</a>
+                  <a
+                    v-if="support.status === 1"
+                    class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg">In đơn</a>
                 </td>
               </tr>
             </tbody>

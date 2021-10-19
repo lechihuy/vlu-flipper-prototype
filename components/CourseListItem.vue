@@ -20,10 +20,7 @@
       </div>
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
-      <span
-        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-        Chưa mở lớp
-      </span>
+      <CourseStatus :status="course.status" />
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
       {{ course.price === 0 ? 'FREE' : course.price.toLocaleString('vi-VN', {
@@ -35,9 +32,11 @@
       {{ course.lessons }}
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-right">
-      <a class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
+      <a v-if="user.role === 'student'" class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
          @click="showConfirmUnEnrollCourseModal"
       >Hủy đăng ký</a>
+      <NuxtLink :to="`/courses/manage/${course.id}`" v-if="user.role === 'manager'" class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
+      >Quản lý</NuxtLink>
     </td>
   </tr>
 </template>

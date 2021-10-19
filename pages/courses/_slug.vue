@@ -9,7 +9,7 @@
           <h1 class="text-white text-3xl font-semibold mb-2">{{ course.name }}</h1>
           <p class="text-base text-gray-200">{{ course.description }}</p>
 
-          <div class="mt-2 flex gap-4">
+          <div class="mt-2 flex gap-4 items-center">
             <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-lg">
               {{ category.name }}
             </span>
@@ -17,6 +17,11 @@
             <span class="flex items-center text-gray-100">
               <solid-clock-icon class="w-5 h-5 text-gray-100 ml-2 mr-1" /> {{ course.lessons }} tiết
             </span>
+
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                  v-if="course.type === 'online'">Online</span>
+            <span class="px-2 inline-flex text-xs ml-auto leading-5 font-semibold rounded-full bg-blue-100 text-blue-800"
+                  v-else>Offline</span>
           </div>
 
           <div class="w-full" >
@@ -59,6 +64,7 @@
 
             <div class="flex flex-col mt-4 gap-1 items-end">
               <button
+                v-if="$store.state.user.role === 'student'"
                 type="button"
                 class="w-full text-center bg-red-500 hover:bg-red-600 uppercase px-5 py-3 text-white rounded-lg"
                 @click="$refs.confirmEnrollCourseModal.isShown = true"

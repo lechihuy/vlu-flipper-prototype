@@ -20,6 +20,10 @@
         style: 'currency',
         currency: 'VND',
       }) }}</span>
+      <span class="px-2 inline-flex text-xs ml-auto leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+            v-if="course.type === 'online'">Online</span>
+      <span class="px-2 inline-flex text-xs ml-auto leading-5 font-semibold rounded-full bg-blue-100 text-blue-800"
+            v-else>Offline</span>
     </div>
     <div class="mt-4">
       <div class="flex mb-1">

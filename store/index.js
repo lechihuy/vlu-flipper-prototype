@@ -34,7 +34,7 @@ export const state = () => ({
     'Võ Việt Hà',
     'Nguyễn Thái Hoàng',
     'Nguyễn Thiên Sơn',
-    'Nguyễn Tất Đạt'
+    'Nguyễn Tấn Đạt'
   ],
   isTurnOffCamera: false,
   microphone: '50',
@@ -43,13 +43,12 @@ export const state = () => ({
   courses: [
     {
       id: 1,
+      status: 'Đang mở đăng ký',
+      type: 'online',
       name: 'Làm quen với Powerpoint',
       teacherId: 4,
-      rating: '5',
       price: 0,
       thumbnail: '/course-1.jpg',
-      slots: 40,
-      enrolled: 35,
       closedAt: '12-10-2021',
       daysLeft: 2,
       categoryId: 2,
@@ -107,13 +106,12 @@ export const state = () => ({
     },
     {
       id: 2,
+      type: 'offline',
+      status: 'Đang mở đăng ký',
       name: 'Kỹ năng thuyết trình',
       teacherId: 1,
-      rating: '4.5',
       price: 500000,
       thumbnail: '/course-2.jpg',
-      slots: 40,
-      enrolled: 39,
       closedAt: '13-10-2021',
       daysLeft: 3,
       isRecommend: true,
@@ -202,13 +200,12 @@ export const state = () => ({
     },
     {
       id: 3,
+      type: 'offline',
+      status: 'Đang mở đăng ký',
       name: 'Làm chủ thời gian của bạn',
       teacherId: 2,
-      rating: '5.0',
       price: 0,
       thumbnail: '/course-3.jpg',
-      slots: 40,
-      enrolled: 40,
       closedAt: '11-10-2021',
       daysLeft: 1,
       isRecommend: true,
@@ -284,13 +281,12 @@ export const state = () => ({
     },
     {
       id: 4,
+      type: 'offline',
+      status: 'Đang mở đăng ký',
       name: 'Kỹ năng giao tiếp',
       teacherId: 3,
-      rating: '5.0',
       price: 500000,
       thumbnail: '/course-4.jpg',
-      slots: 40,
-      enrolled: 38,
       closedAt: '15-10-2021',
       daysLeft: 5,
       categoryId: 1,
@@ -357,13 +353,12 @@ export const state = () => ({
     },
     {
       id: 5,
+      type: 'offline',
+      status: 'Đang mở đăng ký',
       name: 'Kỹ năng dạy online',
       teacherId: 1,
-      rating: '4.8',
       price: 0,
       thumbnail: '/course-5.jpg',
-      slots: 40,
-      enrolled: 15,
       closedAt: '15-10-2021',
       daysLeft: 5,
       categoryId: 1,
@@ -428,13 +423,12 @@ export const state = () => ({
     },
     {
       id: 6,
+      type: 'offline',
+      status: 'Đang mở đăng ký',
       name: 'Nhập môn Office 365',
       teacherId: 2,
-      rating: '4.9',
       price: 0,
-      thumbnail: '/course-5.jpg',
-      slots: 40,
-      enrolled: 3,
+      thumbnail: '/course-6.jpg',
       closedAt: '16-10-2021',
       daysLeft: 6,
       categoryId: 2,
@@ -503,13 +497,12 @@ export const state = () => ({
     },
     {
       id: 7,
+      type: 'offline',
+      status: 'Đang mở đăng ký',
       name: 'Excel cho người mới bắt đầu',
       teacherId: 3,
-      rating: '4.5',
       price: 0,
       thumbnail: '/course-7.jpg',
-      slots: 40,
-      enrolled: 30,
       closedAt: '14-10-2021',
       daysLeft: 4,
       categoryId: 2,
@@ -576,13 +569,12 @@ export const state = () => ({
     },
     {
       id: 8,
+      type: 'offline',
+      status: 'Đang mở đăng ký',
       name: 'Task list với OneNote',
       teacherId: 4,
-      rating: '4.7',
       price: 500000,
       thumbnail: '/course-8.jpg',
-      slots: 40,
-      enrolled: 25,
       closedAt: '14-10-2021',
       daysLeft: 4,
       categoryId: 2,
@@ -634,6 +626,21 @@ export const state = () => ({
           ]
         }
       ]
+    },
+
+    {
+      id: 9,
+      status: 'Ẩn',
+      roadmap: [
+        {
+          name: 'Phần ?: Nhấn vào để sửa',
+          lessons: [
+            {
+              name: 'Bài ?: Nhấn vào để sửa',
+            },
+          ]
+        }
+      ]
     }
   ],
   categories: [
@@ -679,6 +686,7 @@ export const state = () => ({
     {
       id: 1,
       course: 'Khóa học nâng cao năng lực giảng dạy',
+      address: 'Quận 1, HCM',
       attachments: [
         'BienLaiHocPhi.pdf'
       ],
@@ -725,10 +733,10 @@ export const mutations = {
         enrolled: [],
         bookmark: [1],
       } : {
-        id: 1,
-        name: 'Nguyễn Tiến Dũng',
+        id: 6,
+        name: 'Trần Cao Minh',
         avatar: '/teacher-avatar.jpg',
-        role: 'teacher',
+        role: 'manager',
       }
   },
 

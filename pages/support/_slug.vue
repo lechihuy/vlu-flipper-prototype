@@ -10,7 +10,11 @@
         >
       </div>
       <div>
-        <label class="font-semibold text-gray-700 mb-2 block">Tài liệu minh chứng <span class="text-red-500">*</span></label>
+        <label class="font-semibold text-gray-700 mb-2 block">Địa điểm học <span class="text-red-500">*</span></label>
+        <input type="text" :value="support.address" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+      </div>
+      <div>
+        <label class="font-semibold text-gray-700 mb-2 block">Tài liệu minh chứng (có thể upload nhiều file) <span class="text-red-500">*</span></label>
         <div v-if="support.attachments">
           <div class="text-gray-600 p-2 bg-gray-100 rounded-lg mb-2 inline-block" v-for="attachment in support.attachments">
             {{ attachment }}

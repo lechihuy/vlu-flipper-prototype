@@ -1,5 +1,11 @@
 <template>
   <div class="flex flex-col gap-5">
+    <h3 class="text-2xl text-gray-800 flex items-center">Quản lý khóa học
+      <NuxtLink :to="'/courses/create?role=' + user.role" class="flex items-center hover:bg-blue-600 text-base ml-auto bg-blue-500 px-3 py-2 rounded-lg text-white">
+        <solid-plus-icon class="w-5 h-5 mr-1" /> Tạo mới
+      </NuxtLink>
+    </h3>
+
     <div class="col-span-4 bg-white rounded-lg shadow-sm p-5 grid grid-cols-4 gap-5">
       <div>
         <h3 class="font-semibold mb-2 text-gray-700">Tên khóa học</h3>
@@ -26,6 +32,16 @@
           <option value="">Tất cả</option>
           <option value="">FREE</option>
           <option value="">Có phí</option>
+        </select>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-2 text-gray-700">Tình trạng</h3>
+        <select class="form-select px-3 py-2 w-full rounded-full border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+          <option value="">Tất cả</option>
+          <option value="">Đang mở đăng ký</option>
+          <option value="">Đóng đăng ký</option>
+          <option value="">Hủy lớp</option>
         </select>
       </div>
 
@@ -57,20 +73,15 @@
       </div>
     </div>
 
-    <div
-      v-for="category in $store.state.categories"
-      :key="category.id"
-      class="bg-white rounded-lg shadow-sm p-5">
-      <div class="flex items-center mb-5">
-        <h3 class="text-gray-800 font-semibold">{{ category.name }}</h3>
-        <a class="text-blue-500 ml-auto hover:text-blue-700" href="">Xem tất cả</a>
-      </div>
-      <div class="grid grid-cols-4 gap-5">
-        <CategoryCourseItem
-          v-for="course in $store.state.courses.filter(course => course.categoryId === category.id)"
-          :key="course.id"
-          :course="course"
-        />
+    <CourseList
+      v-if="courses.length > 0"
+      :courses="courses"
+    />
+
+    <div v-else class="text-center py-20">
+      <div>
+        <img src="/empty-enroll.jpg" class="w-52 h-52 rounded-full inline-block mx-auto">
+        <p class="text-gray-600 mt-10 text-xl">Không tìm thấy khóa học nào.</p>
       </div>
     </div>
   </div>
@@ -79,9 +90,14 @@
 <script>
 export default {
   computed: {
-    categories() {
-      return this.$store.state.categories
+    courses() {
+      return this.$store.state.courses.filter(course => course.name !== undefined)
+    },
+
+    user() {
+      return this.$store.state.user
     }
-  }
+  },
 }
 </script>
+

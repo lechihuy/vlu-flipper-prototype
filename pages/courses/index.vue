@@ -1,7 +1,6 @@
 <template>
-  <Search v-if="'q' in $route.query" />
-  <StudentCourses v-else-if="$store.state.user.role === 'student'" />
-  <TeacherCourses v-else />
+  <StudentCourses v-if="$store.state.user.role === 'student'" />
+  <ManagerCourses v-else />
 </template>
 
 <script>
