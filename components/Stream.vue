@@ -139,10 +139,10 @@
                 </div>
 
                 <div v-for="student in $store.state.students" :key="student" class="flex px-5 py-2 items-center">
-                  <img :src="'https://ui-avatars.com/api/?name=' + student" class="rounded-full w-10 h-10" />
+                  <img :src="'https://ui-avatars.com/api/?name=' + student.name" class="rounded-full w-10 h-10" />
                   <div class="ml-2">
                     <span class="text-white text-sm block">
-                      {{ student }}
+                      {{ student.name }}
                     </span>
 
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
