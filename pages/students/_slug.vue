@@ -8,7 +8,7 @@
               v-if="student.enrolled.length">Đã tham gia học</span>
         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800"
               v-else>Chưa tham gia học</span>
-        <NuxtLink :to="`/students/certificate/${student.id}?role=${$store.state.user.role}`" class="cursor-pointer flex items-center hover:bg-blue-600 text-base  bg-blue-500 px-3 py-2 rounded-lg text-white">
+        <NuxtLink v-if="student.enrolled.length" :to="`/students/certificate/${student.id}?role=${$store.state.user.role}`" class="cursor-pointer flex items-center hover:bg-blue-600 text-base  bg-blue-500 px-3 py-2 rounded-lg text-white">
           <outline-document-text-icon class="w-5 h-5 mr-1" /> Tạo chứng chỉ
         </NuxtLink>
       </div>
