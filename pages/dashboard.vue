@@ -16,10 +16,10 @@
         <div class="bg-white rounded-lg shadow p-5">
           <p class="text-sm mb-2">Phân loại</p>
           <div class="flex items-center">
-            <div class="w-5 h-5 rounded-sm bg-blue-500 mr-2"></div> 140 học viên đã tham gia
+            <div class="w-5 h-5 rounded-sm bg-green-500 mr-2"></div> 140 học viên đã tham gia
           </div>
           <div class="flex items-center">
-            <div class="w-5 h-5 rounded-sm bg-green-500 mr-2"></div> 10 học viên chưa tham gia
+            <div class="w-5 h-5 rounded-sm bg-gray-300 mr-2"></div> 10 học viên chưa tham gia
           </div>
         </div>
       </div>
