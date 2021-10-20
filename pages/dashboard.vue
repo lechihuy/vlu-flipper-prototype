@@ -8,7 +8,7 @@
           </a>
         </div>
       </h3>
-      <div class="grid grid-cols-2 gap-5 mb-5">
+      <div class="grid grid-cols-2 gap-5">
         <div class="bg-white rounded-lg shadow p-5">
           <p class="text-sm mb-2">Tất cả</p>
           <p class="text-4xl">150 học viên</p>
