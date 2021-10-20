@@ -18,6 +18,11 @@
         :class="{'border-b-2 border-blue-500 text-blue-500 font-semibold': selectedTab === 'schedule'}"
         @click="activeTab('schedule')"
       >Lịch học</div>
+      <div
+        class="px-3 py-2 hover:text-blue-500 cursor-pointer"
+        :class="{'border-b-2 border-blue-500 text-blue-500 font-semibold': selectedTab === 'status'}"
+        @click="activeTab('status')"
+      >Trạng thái</div>
     </div>
 
     <form class="grid grid-cols-12 gap-5 p-5" v-show="selectedTab === 'general'">
@@ -52,10 +57,21 @@
           <small class="text-xs text-gray-500">Nhập "0" nếu khóa học là FREE.</small>
         </div>
         <div>
+          <label class="font-semibold text-gray-700 mb-2 block">Chi phí triển khai <span class="text-red-500">*</span></label>
+          <input type="number" :value="course.fee" min="0" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+        </div>
+        <div>
           <label class="font-semibold text-gray-700 mb-2 block">Giảng viên phụ trách <span class="text-red-500">*</span></label>
           <select class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
             <option value="">-- Chọn giảng viên --</option>
             <option v-for="teacher in $store.state.teacher">{{ teacher.name }}</option>
+          </select>
+        </div>
+        <div>
+          <label class="font-semibold text-gray-700 mb-2 block">Địa điểm học <span class="text-red-500">*</span></label>
+          <select class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+            <option value="online">Online</option>
+            <option value="offline">Offline</option>
           </select>
         </div>
       </div>
@@ -199,6 +215,21 @@
       </div>
     </form>
 
+    <form class="grid gap-5 p-5" v-show="selectedTab === 'status'">
+      <div>
+        <label class="font-semibold text-gray-700 mb-2 block">Trạng thái <span class="text-red-500">*</span></label>
+        <select @change="showEnd" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+          <option value="Đang mở đăng ký">Đang mở đăng ký</option>
+          <option value="Đóng đăng ký">Đóng đăng ký</option>
+          <option value="Hủy lớp">Hủy lớp</option>
+        </select>
+      </div>
+      <div ref="endDate">
+        <h3 class="font-semibold mb-2 text-gray-700">Ngày kết thúc đăng ký <span class="text-red-500">*</span></h3>
+        <input type="date" value="2021-10-14" class="form-text w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+      </div>
+    </form>
+
     <div class="p-5 bg-gray-50 rounded-b-lg">
       <div class="flex items-center">
         <NuxtLink :to="'/courses?role=' + $store.state.user.role" class="bg-white border border-gray-300 inline-block text-gray-800 rounded-lg px-3 py-2 hover:bg-gray-200">Trở về</NuxtLink>
@@ -231,6 +262,15 @@ export default {
 
     addSection() {
       this.$store.commit('addSection', { courseId: this.course.id })
+    },
+
+    showEnd(e) {
+      const val = e.target.value
+      if (val === 'Đang mở đăng ký') {
+        this.$refs.endDate.classList.remove('hidden')
+      } else {
+        this.$refs.endDate.classList.add('hidden')
+      }
     }
   }
 }

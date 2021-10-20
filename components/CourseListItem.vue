@@ -29,7 +29,10 @@
       }) }}
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold">
-      {{ course.lessons }}
+      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+            v-if="course.type === 'online'">Online</span>
+      <span class="px-2 inline-flex text-xs ml-auto leading-5 font-semibold rounded-full bg-blue-100 text-blue-800"
+            v-else>Offline</span>
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-right">
       <a v-if="user.role === 'student'" class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"

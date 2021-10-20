@@ -73,6 +73,7 @@ export const state = () => ({
   courses: [
     {
       id: 1,
+      fee: 15000000,
       status: 'Đang mở đăng ký',
       type: 'online',
       name: 'Làm quen với Powerpoint',
@@ -136,6 +137,7 @@ export const state = () => ({
     },
     {
       id: 10,
+      fee: 20000000,
       type: 'offline',
       status: 'Đóng đăng ký',
       name: 'Làm quen với Notion',
@@ -196,6 +198,7 @@ export const state = () => ({
     },
     {
       id: 11,
+      fee: 15000000,
       type: 'offline',
       status: 'Hủy lớp',
       name: 'Master với Excel nâng cao',
@@ -268,6 +271,7 @@ export const state = () => ({
     },
     {
       id: 2,
+      fee: 17000000,
       type: 'offline',
       status: 'Đang mở đăng ký',
       name: 'Kỹ năng thuyết trình',
@@ -362,6 +366,7 @@ export const state = () => ({
     },
     {
       id: 3,
+      fee: 25000000,
       type: 'offline',
       status: 'Đang mở đăng ký',
       name: 'Làm chủ thời gian của bạn',
@@ -442,6 +447,7 @@ export const state = () => ({
       ]
     },
     {
+      fee: 15000000,
       id: 4,
       type: 'offline',
       status: 'Đang mở đăng ký',
@@ -515,6 +521,7 @@ export const state = () => ({
     },
     {
       id: 5,
+      fee: 15000000,
       type: 'offline',
       status: 'Đang mở đăng ký',
       name: 'Kỹ năng dạy online',
@@ -586,6 +593,7 @@ export const state = () => ({
     {
       id: 6,
       type: 'offline',
+      fee: 15000000,
       status: 'Đang mở đăng ký',
       name: 'Nhập môn Office 365',
       teacherId: 2,
@@ -660,6 +668,7 @@ export const state = () => ({
     {
       id: 7,
       type: 'offline',
+      fee: 15000000,
       status: 'Đang mở đăng ký',
       name: 'Excel cho người mới bắt đầu',
       teacherId: 3,
@@ -732,6 +741,7 @@ export const state = () => ({
     {
       id: 8,
       type: 'offline',
+      fee: 15000000,
       status: 'Đang mở đăng ký',
       name: 'Task list với OneNote',
       teacherId: 4,

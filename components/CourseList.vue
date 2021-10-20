@@ -16,7 +16,7 @@
                 Giá
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Số tiết
+                Địa điểm học
               </th>
               <th scope="col" class="relative px-6 py-3"></th>
             </tr>

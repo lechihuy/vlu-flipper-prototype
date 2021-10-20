@@ -51,7 +51,7 @@
         </div>
         <div>
           <label class="font-semibold text-gray-700 mb-2 block">Thông tin chi tiết <span class="text-red-500">*</span></label>
-          <textarea rows="7" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">{{ course.content }}</textarea>
+          <textarea rows="15" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">{{ course.content }}</textarea>
         </div>
       </div>
       <div class="col-span-4 flex flex-col gap-5">
@@ -66,12 +66,23 @@
           <small class="text-xs text-gray-500">Nhập "0" nếu khóa học là FREE.</small>
         </div>
         <div>
+          <label class="font-semibold text-gray-700 mb-2 block">Chi phí triển khai <span class="text-red-500">*</span></label>
+          <input type="number" :value="course.fee" min="0" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+        </div>
+        <div>
           <label class="font-semibold text-gray-700 mb-2 block">Giảng viên phụ trách <span class="text-red-500">*</span></label>
           <select class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
             <option value="">-- Chọn giảng viên --</option>
             <option v-for="teacher in $store.state.teachers" :value="teacher.id"
               :selected="teacher.id === course.teacherId"
             >{{ teacher.name }}</option>
+          </select>
+        </div>
+        <div>
+          <label class="font-semibold text-gray-700 mb-2 block">Địa điểm học <span class="text-red-500">*</span></label>
+          <select class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+            <option value="online" :selected="course.type === 'online'">Online</option>
+            <option value="offline" :selected="course.type === 'offline'">Offline</option>
           </select>
         </div>
       </div>
