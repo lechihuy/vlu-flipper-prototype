@@ -75,8 +75,8 @@
                 class="w-64 h-full flex-none">
                 <div class="flex items-center justify-center h-full">
                   <div class="text-center">
-                    <img :src="'https://ui-avatars.com/api/?name=' + student" class="w-20 h-20 rounded-full mx-auto inline-block">
-                    <p class="text-white mt-2 flex items-center">{{ student }}
+                    <img :src="'https://ui-avatars.com/api/?name=' + student.name" class="w-20 h-20 rounded-full mx-auto inline-block">
+                    <p class="text-white mt-2 flex items-center">{{ student.name }}
                       <outline-microphone-icon class="w-5 h-5 ml-2 text-red-500" />
                     </p>
                   </div>
