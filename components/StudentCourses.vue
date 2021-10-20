@@ -67,7 +67,7 @@
       </div>
       <div class="grid grid-cols-4 gap-5">
         <CategoryCourseItem
-          v-for="course in $store.state.courses.filter(course => course.categoryId === category.id)"
+          v-for="course in $store.state.courses.filter(course => course.categoryId === category.id && course.status === 'Đang mở đăng ký')"
           :key="course.id"
           :course="course"
         />

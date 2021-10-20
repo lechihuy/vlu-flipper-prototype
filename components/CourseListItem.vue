@@ -35,7 +35,7 @@
       <a v-if="user.role === 'student'" class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
          @click="showConfirmUnEnrollCourseModal"
       >Hủy đăng ký</a>
-      <NuxtLink :to="`/courses/manage/${course.id}`" v-if="user.role === 'manager'" class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
+      <NuxtLink :to="`/courses/manage/${course.id}?role=${user.role}`" v-if="user.role === 'manager'" class="bg-gray-100 text-gray-800 px-3 py-2 hover:bg-gray-200 rounded-lg cursor-pointer"
       >Quản lý</NuxtLink>
     </td>
   </tr>

@@ -48,6 +48,12 @@
         </NuxtLink>
       </li>
 
+      <li v-if="user.role === 'manager'" class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer relative">
+        <NuxtLink :to="'/students?role=' + user.role" class="block flex items-center">
+          <outline-users-icon class="w-5 h-5 mr-2" /> Quản lý học viên
+        </NuxtLink>
+      </li>
+
     </ul>
   </aside>
 </template>

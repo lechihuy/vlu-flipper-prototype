@@ -219,9 +219,9 @@
       <div>
         <label class="font-semibold text-gray-700 mb-2 block">Trạng thái <span class="text-red-500">*</span></label>
         <select @change="showEnd" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
-          <option value="Đang mở đăng ký">Đang mở đăng ký</option>
-          <option value="Đóng đăng ký">Đóng đăng ký</option>
-          <option value="Hủy lớp">Hủy lớp</option>
+          <option :selected="course.status === 'Đang mở đăng ký'" value="Đang mở đăng ký">Đang mở đăng ký</option>
+          <option :selected="course.status === 'Đóng đăng ký'" value="Đóng đăng ký">Đóng đăng ký</option>
+          <option :selected="course.status === 'Hủy lớp'" value="Hủy lớp">Hủy lớp</option>
         </select>
       </div>
       <div ref="endDate" class="hidden">
@@ -231,14 +231,12 @@
     </form>
 
     <form v-show="selectedTab === 'member'" class="p-5">
-      <div v-for="i in 5" :key="i">
-        <div v-for="student in $store.state.students" :key="student">
-          <div class="flex items-center mb-2">
-            <img :src="'https://ui-avatars.com/api/?name=' + student" class="w-10 h-10 rounded-full mr-5">
-            {{ student }}
-            <div class="ml-auto text-gray-600 italic">
-              13/08/2001
-            </div>
+      <div v-for="student in $store.state.students" :key="student.id">
+        <div class="flex items-center mb-2">
+          <img :src="'https://ui-avatars.com/api/?name=' + student.name" class="w-10 h-10 rounded-full mr-5">
+          {{ student.name }}
+          <div class="ml-auto text-gray-600 italic">
+            13/08/2001
           </div>
         </div>
       </div>
@@ -246,7 +244,7 @@
 
     <div class="p-5 bg-gray-50 rounded-b-lg">
       <div class="flex items-center">
-        <NuxtLink :to="'/support?role=' + $store.state.user.role" class="bg-white border border-gray-300 inline-block text-gray-800 rounded-lg px-3 py-2 hover:bg-gray-200">Trở về</NuxtLink>
+        <NuxtLink :to="'/courses?role=' + $store.state.user.role" class="bg-white border border-gray-300 inline-block text-gray-800 rounded-lg px-3 py-2 hover:bg-gray-200">Trở về</NuxtLink>
         <div class="ml-auto">
           <button type="button" class="bg-blue-500 text-white rounded-lg px-3 py-2 hover:bg-blue-600">Lưu thay đổi</button>
         </div>

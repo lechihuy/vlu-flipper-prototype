@@ -100,7 +100,7 @@
             class="px-3 py-2 hover:text-blue-500 cursor-pointer"
             :class="{'border-b-2 border-blue-500 text-blue-500 font-semibold': selectedTab === 'member'}"
             @click="activeTab('member')"
-          >Học viên (40)</div>
+          >Học viên</div>
           <div
             class="px-3 py-2 hover:text-blue-500 cursor-pointer"
             :class="{'border-b-2 border-blue-500 text-blue-500 font-semibold': selectedTab === 'review'}"
@@ -120,12 +120,10 @@
         </div>
 
         <div v-show="selectedTab === 'member'" class="p-5">
-          <div v-for="i in 5" :key="i">
-            <div v-for="student in $store.state.students" :key="student">
-              <div class="flex items-center mb-2">
-                <img :src="'https://ui-avatars.com/api/?name=' + student" class="w-10 h-10 rounded-full mr-5">
-                {{ student }}
-              </div>
+          <div v-for="student in $store.state.students" :key="student.id">
+            <div class="flex items-center mb-2">
+              <img :src="'https://ui-avatars.com/api/?name=' + student.name" class="w-10 h-10 rounded-full mr-5">
+              {{ student.name }}
             </div>
           </div>
         </div>

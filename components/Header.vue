@@ -2,7 +2,7 @@
   <header class="bg-white border-b fixed top-0 left-0 w-full pl-64 z-20">
     <div class="px-10 py-3 flex h-14 items-center">
       <div class="ml-auto h-10 flex flex-row items-center">
-        <div class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">
+        <div v-if="user.role === 'student'" class="text-gray-700 font-semibold mr-10 h-full flex items-center relative">
           <span class="flex absolute h-2 w-2 top-1 -right-1 -mt-1 -mr-1" v-show="Object.keys($store.state.classes[0].liveLesson).length">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>

@@ -30,11 +30,41 @@ export const state = () => ({
     }
   ],
   students: [
-    'Tô Hoàn Bảo',
-    'Võ Việt Hà',
-    'Nguyễn Thái Hoàng',
-    'Nguyễn Thiên Sơn',
-    'Nguyễn Tấn Đạt'
+    {
+      id: 1,
+      name: 'Tô Hoàn Bảo',
+      email: 'bao.th@vanlanguni.vn',
+      enrolled: [1, 2, 3, 4],
+      passes: [1, 2],
+    },
+    {
+      id: 4,
+      name: 'Nguyễn Thiên Sơn',
+      email: 'son.nt@vanlanguni.vn',
+      enrolled: [],
+      passes: [],
+    },
+    {
+      id: 2,
+      name: 'Võ Việt Hà',
+      email: 'ha.vv@vanlanguni.vn',
+      enrolled: [1, 2, 3, 4],
+      passes: [1, 2],
+    },
+    {
+      id: 3,
+      name: 'Nguyễn Thái Hoàng',
+      email: 'hoang.nt@vanlanguni.vn',
+      enrolled: [1, 2, 3, 4],
+      passes: [1, 2],
+    },
+    {
+      id: 5,
+      name: 'Nguyễn Tấn Đạt',
+      email: 'dat.nt@vanlanguni.vn',
+      enrolled: [1, 2, 3],
+      passes: [1, 2],
+    },
   ],
   isTurnOffCamera: false,
   microphone: '50',
@@ -99,6 +129,138 @@ export const state = () => ({
             },
             {
               name: 'Bài 8: Tổng kết',
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 10,
+      type: 'offline',
+      status: 'Đóng đăng ký',
+      name: 'Làm quen với Notion',
+      teacherId: 4,
+      price: 500000,
+      thumbnail: '/course-8.jpg',
+      closedAt: '10-10-2021',
+      daysLeft: 0,
+      categoryId: 2,
+      description: 'Nếu bạn giống như hầu hết chúng tôi, có rất nhiều tác vụ và ghi chú quan trọng của bạn đến từ email. Bạn đã sử dụng Lịch Microsoft và To-Do-List để theo dõi công việc của mình, nhưng bạn muốn làm nhiều hơn thế.',
+      content: 'Hầu hết mọi người không nhận ra rằng họ có thể sử dụng MS OneNote làm trình quản lý tác vụ Outlook với các công cụ To-Do-List của Lịch Outlook. Bằng cách thêm OneNote vào MS Outlook, bạn không chỉ có thể theo dõi các tác vụ của mình, mà bạn còn có thể theo dõi các thông tin khác đến bằng email trong các sổ tay tiện dụng với các tab. Thậm chí còn có các tính năng cộng tác OneNote mà bạn có thể sử dụng để chia sẻ thông tin của mình với những người khác.' +
+        '<br><br>' +
+        'MS OneNote là công cụ ghi chú / to-do-list, là một phần của bộ ứng dụng MS Office. Nó cho phép bạn tổ chức và lưu trữ thông tin cũng như theo dõi các cuộc họp và tác vụ. Khi bạn ở trường, bạn có thể đã sử dụng sổ ghi chép có các tab để giữ cho các giấy tờ của bạn có tổ chức. OneNote hoạt động theo cách tương tự, ngoại trừ việc sổ ghi chép của bạn hiện tại là ảo và các tab của bạn được gọi là các section.' +
+        '<br><br>' +
+        'OneNote được tích hợp vào MS Outlook và bạn có thể sử dụng nó cùng với MS Outlook Calendar và To Do List. Nó cũng có thể được tích hợp vào các ứng dụng phần mềm năng suất khác. OneNote cũng bao gồm các công cụ cộng tác tương đương.',
+      lessons: 6,
+      roadmap: [
+        {
+          name: 'Phần 1: Tổng quan',
+          lessons: [
+            {
+              name: 'Bài 1: Giới thiệu',
+            },
+            {
+              name: 'Bài 2: Cài đặt',
+              resources: [
+                'OneNote.exe',
+                'OneNote.dmg'
+              ]
+            }
+          ]
+        },
+
+        {
+          name: 'Phần 2: Cơ bản',
+          lessons: [
+            {
+              name: 'Bài 3: Đăng nhập tài khoản',
+            },
+            {
+              name: 'Bài 4: Tạo note cơ bản',
+            }
+          ]
+        },
+
+        {
+          name: 'Phần 3: Nâng cao',
+          lessons: [
+            {
+              name: 'Bài 5: Tạo to-do list',
+            },
+            {
+              name: 'Bài 6: Cấu hình nâng cao',
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 11,
+      type: 'offline',
+      status: 'Hủy lớp',
+      name: 'Master với Excel nâng cao',
+      teacherId: 3,
+      price: 0,
+      thumbnail: '/course-7.jpg',
+      closedAt: '10-10-2021',
+      daysLeft: 0,
+      categoryId: 2,
+      description: 'Microsoft Excel là một ứng dụng bảng tính. Nó sử dụng hệ thống các ô trong cột và hàng để thao tác, sắp xếp, tính toán dữ liệu. Bạn có thể sử dụng các bảng tổng hợp (PivotTable), biểu đồ, công thức và hàm theo nhiều cách khác nhau.Điều này cũng cho thấy ứng dụng không bị giới hạn bởi các con số dù tên của nó là “Excel”. Bạn có thể gõ nội dung, ảnh, video, đối tượng cùng nhiều kiểu dữ liệu khác để theo dõi, quản lý và dễ dàng xem thông tin.',
+      content: 'Cell: Bảng tính được tạo thành bởi các khối hình chữ nhật, gọi là ô. Ô chứa dữ liệu bạn nhập vào, từ các con số tới từ, ảnh, công thức. Nói cách khác ô là vùng lưu thông tin. Bạn có thể nhập dữ liệu trực tiếp trong ô hoặc vào thanh công thức (text box) cho ô đó ngay dưới ribbon.' +
+        '<br><br>' +
+        'Tên ô nằm ở bên trái thanh công thức. Mặc định, nó hiển thị cột và hàng tương ứng cho ô đó. Ví dụ, ô ở góc bên trái trên cùng bảng tính là A1 cho cột A, hàng 1.' +
+        '<br><br>' +
+        'Formulas và Functions: Bạn có thể nghĩ formula là phép tính hay phương trình. Trong Excel, bạn có thể tạo công thức hoặc sử dụng hàm có sẵn. Những công thức này có thể tự động tính toán các con số theo phép cộng, phép nhân...' +
+        '<br><br>' +
+        'Ngoài tính toán, bạn có thể sử dụng các tính năng này cho mục đích khác như đếm số lượng mục trong cột hoặc hiển thị tối thiểu hay tối đa số mục trong nhóm ô.',
+      lessons: 10,
+      roadmap: [
+        {
+          name: 'Phần 1: Tổng quan về Excel ',
+          lessons: [
+            {
+              name: 'Bài 1: Giới thiệu tính năng Excel',
+            },
+            {
+              name: 'Bài 2: Hướng dẫn cơ bản Excel',
+            }
+          ]
+        },
+
+        {
+          name: 'Phần 2: Thực hành tổng quan',
+          lessons: [
+            {
+              name: 'Bài 3: Tab Excel và Ribbon',
+            },
+            {
+              name: 'Bài 4: Quick Access Toolbar',
+            },
+            {
+              name: 'Bài 5: Tùy chọn bảng tính',
+            },
+            {
+              name: 'Bài 6: Mở một bảng tính',
+            },
+            {
+              name: 'Bài 7: Làm việc với cột, hàng, ô trong Excel',
+            },
+            {
+              name: 'Bài 8: Hướng dẫn cài đặt',
+              resources: [
+                'Excel.pdf',
+              ]
+            },
+          ]
+        },
+        {
+          name: 'Phần 3: Tổng kết, đánh giá',
+          lessons: [
+            {
+              name: 'Bài 9: Thực hành  Excel '
+            },
+            {
+              name: 'Bài 10: Tổng kết',
             }
           ]
         }
@@ -627,7 +789,6 @@ export const state = () => ({
         }
       ]
     },
-
     {
       id: 9,
       status: 'Ẩn',
@@ -641,7 +802,7 @@ export const state = () => ({
           ]
         }
       ]
-    }
+    },
   ],
   categories: [
     {
