@@ -44,7 +44,7 @@
 
             <div class="mt-5">
               <div class="flex mb-1">
-                <span class="text-base text-gray-200">Kết thúc đăng ký sau {{ course.closedAt }} (còn {{ course.daysLeft }} ngày nữa)</span>
+                <span class="text-base text-gray-200">Thời gian đăng ký từ {{ course.startAt }} đến {{ course.closedAt }} (còn {{ course.daysLeft }} ngày nữa)</span>
               </div>
             </div>
           </div>

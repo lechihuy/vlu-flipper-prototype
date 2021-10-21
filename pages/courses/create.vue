@@ -224,6 +224,10 @@
           <option value="Hủy lớp">Hủy lớp</option>
         </select>
       </div>
+      <div ref="startDate">
+        <h3 class="font-semibold mb-2 text-gray-700">Ngày bắt đầu đăng ký <span class="text-red-500">*</span></h3>
+        <input type="date" value="2021-10-10" class="form-text w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+      </div>
       <div ref="endDate">
         <h3 class="font-semibold mb-2 text-gray-700">Ngày kết thúc đăng ký <span class="text-red-500">*</span></h3>
         <input type="date" value="2021-10-14" class="form-text w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
@@ -268,8 +272,10 @@ export default {
       const val = e.target.value
       if (val === 'Đang mở đăng ký') {
         this.$refs.endDate.classList.remove('hidden')
+        this.$refs.startDate.classList.remove('hidden')
       } else {
         this.$refs.endDate.classList.add('hidden')
+        this.$refs.startDate.classList.add('hidden')
       }
     }
   }

@@ -1,6 +1,8 @@
 <template>
   <div class="bg-white shadow rounded-lg">
     <Modal ref="confirmDelete" />
+    <ModalCertificate ref="confirmCerf" />
+
 
     <h3 class="text-2xl text-gray-800 flex items-center p-5">{{ course.name }}
       <div class="ml-auto flex items-center gap-2">
@@ -235,6 +237,10 @@
           <option :selected="course.status === 'Hủy lớp'" value="Hủy lớp">Hủy lớp</option>
         </select>
       </div>
+      <div ref="startDate">
+        <h3 class="font-semibold mb-2 text-gray-700">Ngày bắt đầu đăng ký <span class="text-red-500">*</span></h3>
+        <input type="date" value="2021-10-10" class="form-text w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+      </div>
       <div ref="endDate" class="hidden">
         <h3 class="font-semibold mb-2 text-gray-700">Ngày kết thúc đăng ký <span class="text-red-500">*</span></h3>
         <input type="date" value="2021-10-14" class="form-text w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
@@ -242,13 +248,44 @@
     </form>
 
     <form v-show="selectedTab === 'member'" class="p-5">
-      <div v-for="student in $store.state.students" :key="student.id">
-        <div class="flex items-center mb-2">
+      <div class="p-5 rounded-lg bg-gray-50 mb-5 flex items-center">
+        <div class="flex-none">
+          <label class="block font-semibold text-gray-700 mb-2">Thêm học viên vào khóa học</label>
+          <input type="text" placeholder="Nhập email học viên..." min="0" class="w-56 form-text px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+          <button type="button" class="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600">Thêm</button>
+        </div>
+        <div class="ml-auto">
+          <label class="block font-semibold text-gray-700 mb-2">Công cụ</label>
+          <button type="button" @click="$refs.confirmCerf.isShown = true" class="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600">Tạo chứng chỉ</button>
+          <button type="button" class="bg-white text-green-500 border border-gray-300 px-3 py-2 rounded-lg hover:bg-green-600 hover:text-white">Xuất Excel</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-12">
+        <div class="col-span-3"></div>
+        <label class="cursor col-span-2 flex items-center justify-center"><input @change="toggleCheckAll($event, 1)" type="checkbox" class="form-checkbox mr-2"> Buổi 1</label>
+        <label class="cursor col-span-2 flex items-center justify-center"><input @change="toggleCheckAll($event,2)" type="checkbox" class="form-checkbox mr-2"> Buổi 2</label>
+        <label class="cursor col-span-2 flex items-center justify-center"><input @change="toggleCheckAll($event, 3)" type="checkbox" class="form-checkbox mr-2"> Buổi 3</label>
+        <div class="col-span-2 flex justify-center items-center">Trạng thái</div>
+      </div>
+      <div v-for="student in $store.state.students" :key="student.id" class="grid grid-cols-12">
+        <div class="flex items-center mb-2 col-span-3">
           <img :src="'https://ui-avatars.com/api/?name=' + student.name" class="w-10 h-10 rounded-full mr-5">
-          {{ student.name }}
-          <div class="ml-auto text-gray-600 italic">
-            13/08/2001
+          <div>
+            {{ student.name }}
+            <div class="text-xs text-gray-500 italic">
+              đăng ký vào 13/08/2001
+            </div>
           </div>
+        </div>
+        <div class="col-span-2 flex justify-center items-center"><input type="checkbox" :checked="[1, 2, 3, 4].includes(student.id)" class="form-checkbox lesson-1"></div>
+        <div class="col-span-2 flex justify-center items-center"><input type="checkbox" :checked="[1, 2, 3].includes(student.id)"class="form-checkbox lesson-2"></div>
+        <div class="col-span-2 flex justify-center items-center"><input type="checkbox" :checked="[1, 2].includes(student.id)"class="form-checkbox lesson-3"></div>
+        <div class="col-span-2 flex justify-center items-center">
+          <span v-if="[4].includes(student.id)" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Vắng quá quy định</span>
+          <span v-else-if="[3, 4].includes(student.id)" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Đang học</span>
+          <span v-else-if="[1, 2].includes(student.id)" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Đạt</span>
+          <span v-else-if="[5].includes(student.id)" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Nghỉ học</span>
         </div>
       </div>
     </form>
@@ -281,6 +318,7 @@ export default {
   mounted() {
     if (this.course.status === 'Đang mở đăng ký') {
       this.$refs.endDate.classList.remove('hidden')
+      this.$refs.startDate.classList.remove('hidden')
     }
   },
 
@@ -303,9 +341,16 @@ export default {
       const val = e.target.value
       if (val === 'Đang mở đăng ký') {
         this.$refs.endDate.classList.remove('hidden')
+        this.$refs.startDate.classList.remove('hidden')
       } else {
         this.$refs.endDate.classList.add('hidden')
+        this.$refs.startDate.classList.add('hidden')
       }
+    },
+
+    toggleCheckAll(e, index) {
+      const val = e.target.checked
+      Array.from(document.getElementsByClassName(`lesson-${index}`)).forEach(el => el.checked = val)
     }
   }
 }
