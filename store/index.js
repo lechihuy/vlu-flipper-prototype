@@ -865,6 +865,7 @@ export const state = () => ({
   supports: [
     {
       id: 1,
+      student: 1,
       course: 'Khóa học nâng cao năng lực giảng dạy',
       address: 'Quận 1, HCM',
       attachments: [
@@ -874,6 +875,8 @@ export const state = () => ({
     },
     {
       id: 2,
+      student: 2,
+      address: 'Quận 1, HCM',
       course: 'Khóa học dựng slide bài giảng',
       attachments: [
         'BienLaiHocPhi.pdf'

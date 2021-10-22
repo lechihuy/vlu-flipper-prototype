@@ -18,6 +18,10 @@
           <label class="font-semibold text-gray-700 mb-2 block">Ngày <span class="text-red-500">*</span></label>
           <input type="text" v-model="date" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
         </div>
+        <div>
+          <label class="font-semibold text-gray-700 mb-2 block">Chữ ký giảng viên đào tạo <span class="text-red-500">*</span></label>
+          <input type="file" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+        </div>
       </div>
     </div>
     <div class="mt-5">

@@ -2,7 +2,7 @@
   <div class="fixed w-full h-full top-0 left-0 z-40" v-show="isShown">
     <div class="bg-black w-full h-full opacity-70"></div>
     <div class="flex w-full h-full absolute z-50 top-0 left-0  justify-center items-center" @click.self="close">
-      <div class="bg-white rounded-lg w-96 p-5">
+      <div class="bg-white rounded-lg w-1/2 p-5">
         <div class="pb-5">
           <h3 class="mb-5 font-semibold text-gray-600">Danh sách học viên có thể nhận chứng chỉ</h3>
           <div v-for="student in $store.state.students.filter(std => [1, 2].includes(std.id))" :key="student.id">
@@ -16,6 +16,10 @@
               </div>
               <input type="checkbox" class="form-checkbox ml-auto" checked>
             </div>
+          </div>
+          <div class="mt-5">
+            <label class="text-gray-700 font-semibold block mb-2">Chữ ký giảng viên đào tạo</label>
+            <input type="file">
           </div>
         </div>
         <div class="flex items-center justify-center gap-5">
@@ -35,7 +39,7 @@
 export default {
   data() {
     return {
-      isShown: true,
+      isShown: false,
     }
   },
 
