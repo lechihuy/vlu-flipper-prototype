@@ -915,6 +915,7 @@ export const mutations = {
         role: 'student',
         enrolled: [],
         bookmark: [1],
+        courses: [1, 2, 3, 4],
       } : {
         id: 6,
         name: 'Trần Cao Minh',

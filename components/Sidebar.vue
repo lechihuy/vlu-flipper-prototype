@@ -20,6 +20,12 @@
     </div>
 
     <ul class="px-2 mt-4">
+      <li v-if="user.role === 'student'" class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer relative">
+        <NuxtLink :to="`/progress?role=${user.role}`" class="block flex items-center">
+          <outline-academic-cap-icon class="w-5 h-5 mr-2" /> Quá trình học tập
+        </NuxtLink>
+      </li>
+
       <li v-if="user.role === 'manager'" class="text-white px-3 py-2 rounded-lg hover:bg-gray-900 font-semibold hover:cursor-pointer relative">
         <NuxtLink :to="`/dashboard?role=${user.role}`" class="block flex items-center">
           <outline-view-grid-icon class="w-5 h-5 mr-2" /> Thống kê
