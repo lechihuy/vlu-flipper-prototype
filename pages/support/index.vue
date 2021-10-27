@@ -48,7 +48,7 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
             <tr>
-              <th v-if="user.role === 'student'" scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th v-if="user.role !== 'manager'" scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Học viên
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -65,7 +65,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               <tr v-for="(support, index) in $store.state.supports" :key="index">
-                <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold" v-if="user.role === 'student'">
+                <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-semibold" v-if="user.role !== 'manager'">
                   <div class="flex items-center col-span-3">
                     <img :src="'https://ui-avatars.com/api/?name=' + $store.state.students.find(std => std.id === support.student).name" class="w-10 h-10 rounded-full mr-5">
                     <div>
