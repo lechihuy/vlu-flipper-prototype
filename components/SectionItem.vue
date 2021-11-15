@@ -47,7 +47,7 @@
                 <input type="file" class="hidden" @input="uploadResource($event, index)" />
               </label>
               <div
-                v-for="file in lesson.resources"
+                v-for="file in lesson.resources" :key="file"
                 class="px-3 py-1 hover:bg-gray-100 text-left font-normal truncate flex items-center"
               >
                 <span class="mr-2 block truncate">{{ file }}</span>
@@ -101,23 +101,11 @@ export default {
     },
 
     toggleResource(index) {
-      if (! this.$refs[index][0].lastElementChild.classList.contains('hidden')) {
+      if (this.$refs[index][0].lastElementChild.classList.contains('hidden')) {
+        this.$refs[index][0].lastElementChild.classList.remove('hidden')
+      } else {
         this.$refs[index][0].lastElementChild.classList.add('hidden')
-        return
       }
-
-      for (const section in this.$parent.$refs) {
-        for (const lesson in this.$parent.$refs[section]) {
-          const resources = this.$parent.$refs[section][0].$refs
-          if (Object.keys(resources).length === 0) continue
-
-          for (const resource in resources)
-            resources[resource][0].lastElementChild.classList.add('hidden')
-        }
-      }
-
-      this.$refs[index][0].lastElementChild.classList.remove('hidden')
-
     },
 
     uploadResource(e, lessonIndex) {

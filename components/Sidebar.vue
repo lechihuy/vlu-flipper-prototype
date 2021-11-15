@@ -16,7 +16,9 @@
         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800"
               v-else>Quản trị viên</span>
       </div>
-      <outline-cog-icon class="w-6 h-6 text-white ml-auto" />
+      <a class="ml-auto" :href="`/?role=${user.role === 'student' ? 'manager' : 'student'}`">
+        <solid-switch-horizontal-icon class="w-6 h-6 text-white" />
+      </a>
     </div>
 
     <ul class="px-2 mt-4">
