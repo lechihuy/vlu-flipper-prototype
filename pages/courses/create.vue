@@ -41,10 +41,6 @@
           <textarea rows="5" class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
           </textarea>
         </div>
-        <div>
-          <h3 class="font-semibold mb-2 text-gray-700">Ngày kết thúc đăng ký <span class="text-red-500">*</span></h3>
-          <input type="date" class="form-text w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
-        </div>
       </div>
       <div class="col-span-4 flex flex-col gap-5">
         <div>
@@ -64,7 +60,7 @@
           <label class="font-semibold text-gray-700 mb-2 block">Giảng viên phụ trách <span class="text-red-500">*</span></label>
           <select class="form-text px-3 py-2 w-full rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
             <option value="">-- Chọn giảng viên --</option>
-            <option v-for="teacher in $store.state.teacher" :key="teacher">{{ teacher.name }}</option>
+            <option v-for="teacher in $store.state.teachers" :key="teacher">{{ teacher.name }}</option>
           </select>
         </div>
         <div>
